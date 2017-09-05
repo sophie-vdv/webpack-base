@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack-dev-server --watch",
-    "build:prod": "webpack -p"
+    "start": "webpack-dev-server --watch",
+    "build": "webpack -p"
   },
   "author": "Sophie Vanderveken",
   "license": "ISC",
