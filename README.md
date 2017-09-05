@@ -27,7 +27,7 @@ This will compile files in the dist folder.
 ```
 npm run build
 ```
-## Interesting links and knowledges 
+## Interesting links
 
 * [Webpack 2 Basics Tutorial](https://www.youtube.com/watch?v=HNRt0lODCQM) - by [mschwarzmueller](https://github.com/mschwarzmueller)
 
