@@ -2,8 +2,7 @@
 A webpack base for your project :sparkles:
 
 ## Getting Started
-
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+This is a simple repo to start your project with a webpack base. Using sass and jquery 
 
 ### Prerequisites
 
@@ -28,12 +27,11 @@ This will compile files in the dist folder.
 ```
 npm run build
 ```
+## Interesting links and knowledges 
+
+⋅⋅* [Webpack 2 Basics Tutorial](https://www.youtube.com/watch?v=HNRt0lODCQM) - by [mschwarzmueller](https://github.com/mschwarzmueller)
+⋅⋅* [A Beginner’s Guide to Webpack 2 and Module Bundling](https://www.sitepoint.com/beginners-guide-to-webpack-2-and-module-bundling/) - by [Mark Brown](https://www.sitepoint.com/author/mbrown/)
+
 ## Authors
 
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
-
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+* **Sophie Vanderveken & Muhammad Dadu**
