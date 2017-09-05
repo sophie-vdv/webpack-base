@@ -29,8 +29,8 @@ npm run build
 ```
 ## Interesting links and knowledges 
 
-⋅⋅*[Webpack 2 Basics Tutorial](https://www.youtube.com/watch?v=HNRt0lODCQM) - by [mschwarzmueller](https://github.com/mschwarzmueller)
-⋅⋅*[A Beginner’s Guide to Webpack 2 and Module Bundling](https://www.sitepoint.com/beginners-guide-to-webpack-2-and-module-bundling/) - by [Mark Brown](https://www.sitepoint.com/author/mbrown/)
+⋅⋅1. [Webpack 2 Basics Tutorial](https://www.youtube.com/watch?v=HNRt0lODCQM) - by [mschwarzmueller](https://github.com/mschwarzmueller)
+⋅⋅1. [A Beginner’s Guide to Webpack 2 and Module Bundling](https://www.sitepoint.com/beginners-guide-to-webpack-2-and-module-bundling/) - by [Mark Brown](https://www.sitepoint.com/author/mbrown/)
 
 ## Authors
 
