@@ -34,7 +34,7 @@ module.exports = {
                         options: {
                             plugins: () => [autoprefixer]
                         }
-                    }, 'sass-loader', 'resolve-url-loader']
+                    }, 'resolve-url-loader', 'sass-loader']
                 })
             },
             {

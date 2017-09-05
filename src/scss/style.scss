@@ -1,4 +1,14 @@
 #test {
-    background-color: red;
+    background-color: #FEE140;
+    background-image: linear-gradient(90deg, #FEE140 0%, #FA709A 100%);
     display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+
+    .title {
+        font-family: 'Arial Black';
+        font-size: 72px;
+        color: white;
+    }
 }
