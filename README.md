@@ -35,4 +35,4 @@ npm run build
 
 ###### Authors
 
-###### * **Sophie Vanderveken & Muhammad Dadu**
+###### **Sophie Vanderveken & Muhammad Dadu** :shipit:
