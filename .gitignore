@@ -8,6 +8,9 @@ yarn-error.log*
 # Ignore compile files
 dist/
 
+# Ignore Webstorm file
+.idea/
+
 # Runtime data
 pids
 *.pid
