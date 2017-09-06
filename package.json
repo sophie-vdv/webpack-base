@@ -19,8 +19,12 @@
     "css-loader": "^0.28.7",
     "extract-text-webpack-plugin": "^3.0.0",
     "file-loader": "^0.11.2",
+    "handlebars": "^4.0.10",
+    "handlebars-loader": "^1.6.0",
+    "handlebars-template-loader": "^0.8.0",
     "html-loader": "^0.5.1",
     "html-webpack-plugin": "^2.30.1",
+    "jquery": "^3.2.1",
     "lodash": "^4.17.4",
     "node-sass": "^4.5.3",
     "normalize.css": "^7.0.0",
@@ -31,8 +35,5 @@
     "transform-runtime": "0.0.0",
     "webpack": "^3.5.5",
     "webpack-dev-server": "^2.7.1"
-  },
-  "dependencies": {
-    "jquery": "^3.2.1"
   }
 }

@@ -28,7 +28,7 @@ module.exports = {
             },
             {
                 test: /\.css$/,
-                loader: ExtractTextPlugin.extract({ fallback: 'style-loader', use: 'css-loader' })
+                loader: ExtractTextPlugin.extract({fallback: 'style-loader', use: 'css-loader'})
             },
             {
                 test: /\.scss$/,
@@ -51,15 +51,20 @@ module.exports = {
                 loaders: 'file-loader?name=./img/[sha512:hash:base64:7].[ext]'
             },
             {
-                test: /\.html$/,
-                loader: 'html-loader'
-            }
+                test: /\.hbs$/,
+                loader: 'handlebars-loader',
+                query: {
+                    partialDirs: [
+                        path.resolve(__dirname, 'src/partials')
+                    ]
+                }
+            },
         ]
     },
     plugins: [
         extractCSS,
         new HtmlWebpackPlugin({
-            template: 'src/index.html'
+            template: 'src/index.hbs'
         }),
         new webpack.ProvidePlugin({
             $: "jquery",
