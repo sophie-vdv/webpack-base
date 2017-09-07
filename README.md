@@ -2,7 +2,19 @@
 A webpack base for your project :sparkles:
 
 ## Getting Started
-This is a simple repo to start your project with a webpack base. Using sass and jquery 
+This is a simple repo to start your project with a webpack base. Using sass, handlebars and jquery 
+
+## Loaders documentation
+
+* [handlebars-loader](https://github.com/pcardune/handlebars-loader)
+* [sass-loader](https://github.com/webpack-contrib/sass-loader)
+* [postcss-loader](https://github.com/postcss/postcss-loader)
+* [css-loader](https://github.com/webpack-contrib/css-loader)
+* [style-loader](https://github.com/webpack-contrib/style-loader)
+* [resolve-url-loader](https://github.com/bholloway/resolve-url-loader)
+* [file-loader](https://github.com/webpack-contrib/file-loader)
+* [babel-loader](https://github.com/babel/babel-loader)
+* [autoprefixer](https://github.com/postcss/autoprefixer)
 
 ### Prerequisites
 
