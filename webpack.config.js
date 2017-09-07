@@ -49,10 +49,6 @@ module.exports = {
                 loader: 'file-loader?name=./fonts/[name].[ext]'
             },
             {
-                test: /\.(jpe?g|png|gif|svg|ico)$/i,
-                loaders: 'file-loader?name=./img/[sha512:hash:base64:7].[ext]'
-            },
-            {
                 test: /\.hbs$/,
                 loader: 'handlebars-loader',
                 query: {
