@@ -1,3 +1,12 @@
 @import '~normalize.css';
-@import 'style.scss';
-@import 'fonts.scss';
+
+// Variables need to be imported first
+@import './variables/variables.scss';
+
+@import './base/style.scss';
+
+@import './components/firstMenu.scss';
+@import './components/footer.scss';
+
+@import './helpers/cursor.scss';
+@import './helpers/text.scss';
