@@ -1,4 +1,51 @@
-.firstMenuContainer {
+.homeContainer {
     width: 100%;
-    height: calc(100% - 35px);
+    height: 100%;
+}
+
+.homeMenuContainer {
+    width: 100%;
+    height: calc(100% - #{$footerHeight});
+
+    @media screen and (min-width: $homeMenuBreakpoint) {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+.homeMenuArea {
+    width: 100%;
+    height: 200px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.nameContainer {
+    width: 100%;
+    height: calc(50% - 3px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @media screen and (min-width: $homeMenuBreakpoint) {
+        width: 50%;
+
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-end;
+    }
+}
+
+.borderSeparator {
+    width: calc(100% - 50px);
+    height: 3px;
+    margin: 0 25px;
+}
+
+.contentContainer {
+    width: 100%;
+    height: 100%;
 }

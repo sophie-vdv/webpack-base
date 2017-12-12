@@ -1,5 +1,17 @@
 $mainFont: DejaVu Sans;
 
+// Breakpoints
+$screen-xs: 0px;
+$screen-sm: 592px;
+$screen-md: 784px;
+$screen-lg: 1200px;
+$screen-lg-max: 1440px;
+
+// Custom Breakpoints
+$homeMenuBreakpoint: 665px;
+
 $backgroundColor: #2B2B2B;
 
 $textColor: white;
+
+$footerHeight: 35px;
