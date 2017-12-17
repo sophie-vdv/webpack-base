@@ -30,6 +30,12 @@
     justify-content: flex-start;
     align-items: flex-end;
 
+    .nameContent {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
     @media screen and (min-width: $homeMenuBreakpoint) {
         width: 50%;
 
@@ -72,44 +78,51 @@
 .borderFiller {
     width: 0px;
     height: 100%;
-  
+
     background-color: white;
-  
+
     animation-name: borderFiller; /* the name of the animation we defined above */
     animation-iteration-count: 1; /* how many times the animation will play */
     animation-timing-function: ease-in; /* how the animation will behave */
     animation-duration: 2s; /* the duration of the animation */
     animation-fill-mode: forwards; /* prevent from going back to the begining*/
-  }
-  
-  @keyframes borderFiller {
-      from {width: 0px;}
-      to {width: 100%;}
-  }
+}
 
-.contentContainer {
-    width: 100%;
-    height: 100%;
+@keyframes borderFiller {
+    from {width: 0px;}
+    to {width: 100%;}
 }
 
 .menuWrapper {
-    width: 50%;
+    width: 100%;
     height: 50%;
+
+    @media screen and (min-width: $homeMenuBreakpoint) {
+        width: 50%;
+        height: 50%;
+    }
 }
 
 .menuArea {
-    width: calc(100% - 25px);
+    width: calc(100% - 50px);
     height: 0px;
+
+    margin: 0 25px;
   
     overflow: hidden;
     z-index: 10;
   
     color: white;
-  
+
     display: flex;
     flex-direction: row;
-    justify-content: space-between;;
+    justify-content: space-between;
     align-items: center;
+  
+    @media screen and (min-width: $homeMenuBreakpoint) {
+        width: calc(100% - 25px);
+        margin: 0;
+    }
   
     animation-name: nameAppear;
     animation-iteration-count: 1;

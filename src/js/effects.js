@@ -10,13 +10,12 @@ module.exports = {
             module.exports.containerFadeIn('js-content-area');
         });
     },
-    removeMarginToMainMenu: function () {
+    removeMarginToMainMenu: function (nameClicked = false) {
         let $mainContainer = $body.find('.js-main-menu');
         
-        module.exports.containerFadeOut('js-second-nav-wrapper');
         module.exports.containerFadeOut('js-content-area');
-      
-        if($(this).attr('id') === 'second_nome_reload') {
+
+        if(nameClicked) {
           $mainContainer.animate({
             'margin-top': '0px'
           }, 1250);

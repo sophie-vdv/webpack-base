@@ -5,7 +5,8 @@
  * 
  */
 
-import {addMarginToMainMenu} from './effects.js';
+import {addMarginToMainMenu, removeMarginToMainMenu} from './effects.js';
+import {addAboutButton, addArrowsContainer} from './hbsInjector.js';
 
 let $body = $('body');
 
@@ -28,9 +29,27 @@ class Router {
     handleNavClick() {
         let menuState = $body.attr('data-menu-in-view');
         let id = $(this).attr('id');
+        let $contentArea;
+        let nameClicked = false;
 
-        if (menuState) {
-            addMarginToMainMenu();
+        if (menuState === 'first') {
+            if (id === 'about') {
+                $contentArea = $body.find('.js-content-area').empty();
+                $body.attr('data-menu-in-view', 'about');
+                addAboutButton();
+                addArrowsContainer();
+                addMarginToMainMenu();
+            } else {
+                $body.attr('data-menu-in-view', 'second');
+                addMarginToMainMenu();
+            }
+        } else if (menuState === 'second') {
+            if (id === 'name') {
+                nameClicked = true;
+            }
+
+            $body.attr('data-menu-in-view', 'first');
+            removeMarginToMainMenu(nameClicked);
         }
     }
 }
