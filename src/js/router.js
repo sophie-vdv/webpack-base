@@ -5,6 +5,8 @@
  * 
  */
 
+import {addMarginToMainMenu} from './effects.js';
+
 let $body = $('body');
 
 class Router {
@@ -24,10 +26,12 @@ class Router {
     }
 
     handleNavClick() {
-        let menuState;
+        let menuState = $body.attr('data-menu-in-view');
         let id = $(this).attr('id');
 
-        console.log(id);
+        if (menuState) {
+            addMarginToMainMenu();
+        }
     }
 }
 
