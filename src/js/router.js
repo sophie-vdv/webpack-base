@@ -5,8 +5,7 @@
  * 
  */
 
-import {addMarginToMainMenu, removeMarginToMainMenu} from './effects.js';
-import {addAboutButton, addArrowsContainer} from './hbsInjector.js';
+import {addMarginToMainMenu, removeMarginToMainMenu, initAboutMenuFunctionality, addButtonsFunctionality} from './effects.js';
 
 let $body = $('body');
 
@@ -36,9 +35,13 @@ class Router {
             if (id === 'about') {
                 $contentArea = $body.find('.js-content-area').empty();
                 $body.attr('data-menu-in-view', 'about');
-                addAboutButton();
-                addArrowsContainer();
-                addMarginToMainMenu();
+
+                initAboutMenuFunctionality()
+                .then(() => {
+                    addButtonsFunctionality();
+                    addMarginToMainMenu();
+                    // add effects to buttons
+                });
             } else {
                 $body.attr('data-menu-in-view', 'second');
                 addMarginToMainMenu();

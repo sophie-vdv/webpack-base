@@ -1,4 +1,11 @@
+import {addAboutButton, addArrowsContainer} from './hbsInjector.js';
+
 let $body = $('body');
+let $secondMenuContainer = $body.find('.js-content-area');
+
+function resetWebPage() {
+    location.reload();
+}
 
 module.exports = {
     addMarginToMainMenu: function () {
@@ -26,5 +33,16 @@ module.exports = {
     },
     containerFadeOut: function (container) {
         $body.find('.' + container).fadeTo('slow', 0);
+    },
+    initAboutMenuFunctionality: function () {
+        return new Promise((resolve, reject) => {
+            addAboutButton();
+            addArrowsContainer();
+
+            resolve();
+        });
+    },
+    addButtonsFunctionality: function () {
+        $secondMenuContainer.on('click', '.js-close-about-area', resetWebPage);
     }
 }
