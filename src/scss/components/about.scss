@@ -1,0 +1,36 @@
+#escButtonContainer {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+}
+
+#arrowsButtonsContainer {
+    width: 76px;
+    height: 37px;
+
+    position: absolute;
+    bottom: 12px;
+    right: 12px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.aboutButton {
+    width: 35px;
+    height: 35px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid rgb(49, 48, 48);
+    color: rgb(49, 48, 48);   
+}
+
+.buttonHover:hover {
+    color: white;
+    border: 1px solid white;
+}

@@ -9,7 +9,7 @@ body {
   
     background-color: $backgroundColor;
   
-    font-family: $mainFont;
+    font-family: $mainFont, $fallbackFont;
   
     overflow: hidden;
   
