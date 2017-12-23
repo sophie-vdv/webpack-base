@@ -5,7 +5,7 @@
  * 
  */
 
-import {addMarginToMainMenu, removeMarginToMainMenu, initAboutMenuFunctionality, addButtonsFunctionality, initAboutContainer} from './effects.js';
+import {addMarginToMainMenu, removeMarginToMainMenu, initAboutMenuFunctionality, addButtonsFunctionality, initContentContainer} from './effects.js';
 
 let $body = $('body');
 
@@ -33,7 +33,7 @@ class Router {
 
         if (menuState === 'first') {
             if (id === 'about') {
-                initAboutContainer()
+                initContentContainer('about')
                 .then(() => {
                     initAboutMenuFunctionality();
                 })
@@ -42,8 +42,10 @@ class Router {
                     addMarginToMainMenu();
                 });
             } else {
-                $body.attr('data-menu-in-view', 'second');
-                addMarginToMainMenu();
+                initContentContainer('second', '.js-content-section')
+                .then(() => {
+                    addMarginToMainMenu();
+                });
             }
         } else if (menuState === 'second') {
             switch(id) {
@@ -53,7 +55,7 @@ class Router {
                     removeMarginToMainMenu();
                     break;
                 case 'about':
-                    initAboutContainer()
+                    initContentContainer('about')
                     .then(() => {
                         initAboutMenuFunctionality();
                     })
@@ -62,10 +64,16 @@ class Router {
                     });
                     break;
                 case 'projs':
-                    console.log('projs');
+                    initContentContainer('second', '.js-content-section')
+                    .then(() => {
+                        console.log('load projs info')
+                    });
                     break;
                 case 'contacts':
-                    console.log('contacts');
+                    initContentContainer('second', '.js-content-section')
+                    .then(() => {
+                        console.log('load contacts info')
+                    });
                     break;
                 default:
                     console.log('Button with unrecognized id.');

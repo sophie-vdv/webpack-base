@@ -98,10 +98,10 @@ module.exports = {
             }
         });
     },
-    initAboutContainer() {
+    initContentContainer(menuView, areaToEmpty = '.js-content-area') {
         return new Promise((resolve, reject) => {
-            $secondMenuContainer = $body.find('.js-content-area').empty();
-            $body.attr('data-menu-in-view', 'about');
+            $secondMenuContainer = $body.find(areaToEmpty).empty();
+            $body.attr('data-menu-in-view', menuView);
 
             resolve();
         });
