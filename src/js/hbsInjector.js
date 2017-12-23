@@ -9,8 +9,8 @@ const escButton = `
 
 const arrowsContainer = `
     <div id="arrowsButtonsContainer">
-        <div id="leftButtonArrow" class="aboutButton js-about-left-arrow buttonHover no-select-text cursor-pointer">&#9665;</div>
-        <div id="rightButtonArrow" class="aboutButton js-about-right-arrow buttonHover no-select-text cursor-pointer">&#9655;</div>
+        <div id="leftButtonArrow" class="aboutButton buttonHover no-select-text cursor-pointer js-about-left-arrow">&#9665;</div>
+        <div id="rightButtonArrow" class="aboutButton buttonHover no-select-text cursor-pointer js-about-right-arrow">&#9655;</div>
     </div>
 `;
 
