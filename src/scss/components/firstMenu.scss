@@ -136,11 +136,15 @@
     width: 33.3%;
     height: 100%;
 
-    font-size: 20px;
+    font-size: 18px;
 
     display: flex;
     justify-content: center;
     align-items: center;
+
+    @media screen and (min-width: $screen-sm) {
+        font-size: 20px;
+    }
 }
 
 .menuOption:hover {

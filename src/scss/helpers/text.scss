@@ -7,5 +7,13 @@
 }
 
 .text-big-header {
-    font-size: 50px;
+    font-size: 35px;
+
+    @media screen and (min-width: $textBigMediumBreakpoint) {
+        font-size: 40px;
+    }
+
+    @media screen and (min-width: $textBigLargeBreakpoint) {
+        font-size: 50px;
+    }
 }
