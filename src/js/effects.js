@@ -36,22 +36,26 @@ module.exports = {
             module.exports.containerFadeIn('js-content-area');
         });
     },
-    removeMarginToMainMenu: function (nameClicked = false) {
+    removeMarginToMainMenu: function () {
         let $mainContainer = $body.find('.js-main-menu');
         
-        module.exports.containerFadeOut('js-content-area');
-
-        if(nameClicked) {
-          $mainContainer.animate({
-            'margin-top': '0px'
-          }, 1250);
-        }
+        module.exports.containerFadeOut('js-content-area')
+        .then(() => {
+            $mainContainer.animate({
+                'margin-top': '0px'
+            }, 1250);
+        })
     },
     containerFadeIn: function (container) {
-        $body.find('.' + container).fadeTo('slow', 1);
+        return new Promise((resolve, reject) => {
+            $body.find('.' + container).fadeTo('slow', 1);
+        });
     },
     containerFadeOut: function (container) {
-        $body.find('.' + container).fadeTo('slow', 0);
+        return new Promise((resolve, reject) => {
+            $body.find('.' + container).fadeTo('slow', 0);
+            resolve();
+        });
     },
     initAboutMenuFunctionality: function () {
         return new Promise((resolve, reject) => {
@@ -92,6 +96,14 @@ module.exports = {
                     $secondMenuContainer.find('.js-about-right-arrow').removeClass('buttonBeingPressed');
                 }
             }
+        });
+    },
+    initAboutContainer() {
+        return new Promise((resolve, reject) => {
+            $secondMenuContainer = $body.find('.js-content-area').empty();
+            $body.attr('data-menu-in-view', 'about');
+
+            resolve();
         });
     }
 }

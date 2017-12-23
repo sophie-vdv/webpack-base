@@ -5,7 +5,7 @@
  * 
  */
 
-import {addMarginToMainMenu, removeMarginToMainMenu, initAboutMenuFunctionality, addButtonsFunctionality} from './effects.js';
+import {addMarginToMainMenu, removeMarginToMainMenu, initAboutMenuFunctionality, addButtonsFunctionality, initAboutContainer} from './effects.js';
 
 let $body = $('body');
 
@@ -33,26 +33,44 @@ class Router {
 
         if (menuState === 'first') {
             if (id === 'about') {
-                $contentArea = $body.find('.js-content-area').empty();
-                $body.attr('data-menu-in-view', 'about');
-
-                initAboutMenuFunctionality()
+                initAboutContainer()
+                .then(() => {
+                    initAboutMenuFunctionality();
+                })
                 .then(() => {
                     addButtonsFunctionality();
                     addMarginToMainMenu();
-                    // add effects to buttons
                 });
             } else {
                 $body.attr('data-menu-in-view', 'second');
                 addMarginToMainMenu();
             }
         } else if (menuState === 'second') {
-            if (id === 'name') {
-                nameClicked = true;
+            switch(id) {
+                case 'name':
+                    nameClicked = true;
+                    $body.attr('data-menu-in-view', 'first');
+                    removeMarginToMainMenu();
+                    break;
+                case 'about':
+                    console.log('about');
+                    initAboutContainer()
+                    .then(() => {
+                        initAboutMenuFunctionality();
+                    })
+                    .then(() => {
+                        addButtonsFunctionality();
+                    });
+                    break;
+                case 'projs':
+                    console.log('projs');
+                    break;
+                case 'contacts':
+                    console.log('contacts');
+                    break;
+                default:
+                    console.log('Button with unrecognized id.');
             }
-
-            $body.attr('data-menu-in-view', 'first');
-            removeMarginToMainMenu(nameClicked);
         }
     }
 }
