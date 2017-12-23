@@ -53,7 +53,6 @@ class Router {
                     removeMarginToMainMenu();
                     break;
                 case 'about':
-                    console.log('about');
                     initAboutContainer()
                     .then(() => {
                         initAboutMenuFunctionality();
