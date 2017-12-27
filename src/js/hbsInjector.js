@@ -59,8 +59,8 @@ module.exports = {
                                 <i class="Icon Icon--github"></i>
                             </a>
                         </li>
-                        <li class="contactsListItem NoList--contacts--quote">
-                            <p class="js-quote-container"></p>
+                        <li class="contactsListItem">
+                            <p class="text-italic js-quote-container"></p>
                         </li>
                     </ul>
                 </div>
