@@ -1,4 +1,4 @@
-import {addAboutButton, addArrowsContainer} from './hbsInjector.js';
+import {addAboutButton, addArrowsContainer, loadContactsContent} from './hbsInjector.js';
 
 let $body = $('body');
 let $secondMenuContainer = $body.find('.js-content-area');
@@ -48,13 +48,16 @@ module.exports = {
     },
     containerFadeIn: function (container) {
         return new Promise((resolve, reject) => {
-            $body.find('.' + container).fadeTo('slow', 1);
+            $body.find('.' + container).fadeTo('slow', 1, () => {
+                resolve();
+            });
         });
     },
     containerFadeOut: function (container) {
         return new Promise((resolve, reject) => {
-            $body.find('.' + container).fadeTo('slow', 0);
-            resolve();
+            $body.find('.' + container).fadeTo('slow', 0, () => {
+                resolve();
+            });
         });
     },
     initAboutMenuFunctionality: function () {
@@ -103,6 +106,18 @@ module.exports = {
             $secondMenuContainer = $body.find(areaToEmpty).empty();
             $body.attr('data-menu-in-view', menuView);
 
+            resolve();
+        });
+    },
+    loadPageContent(pageToLoad) {
+        return new Promise((resolve, reject) => {
+            switch(pageToLoad) {
+                case 'contacts':
+                    loadContactsContent();
+                    break;
+                default:
+                    console.log('404 Page not found');
+            }
             resolve();
         });
     }

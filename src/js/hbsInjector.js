@@ -14,6 +14,67 @@ const arrowsContainer = `
     </div>
 `;
 
+function getProgrammerQuote() {
+    let quote;
+    let $quoteContainer = $body.find('.js-quote-container');
+
+    $.ajax({
+        url: 'http://cors-proxy.htmldriven.com/?url=http://thoughtsoncoding.com/api/1.0/random.json',
+        error: function () {
+            quote = 'Insert cheeky quote here.';
+            $quoteContainer.html(quote);
+        },
+        success: function (data) {
+            quote = JSON.parse(data.body).quote;
+            $quoteContainer.html(quote);
+        }
+    });
+}
+
+module.exports = {
+    addAboutButton: function (buttonContent = '', classPositioning = '') {
+        $container.append(escButton);
+    },
+    addArrowsContainer: function (buttonContent = '', classPositioning = '') {
+        $container.append(arrowsContainer);
+    },
+    loadContactsContent: function () {
+        return new Promise((resolve, reject) => {
+            const html = `
+                <div id="contactContainer">
+                    <ul id="contactsListContainer">
+                        <li class="contactsListItem">
+                            For more information you can contact me using:
+                        </li>
+                        <li class="contactsListItem">
+                            <a href="mailto:miguel.rib.20@gmail.com" class="contactsListItem--myEmail" target="_top">My Email</a>
+                        </li>
+                        <li class="contactsListItem">
+                            <a href="https://www.linkedin.com/in/miguel-ribeiro-7bb32a110/" target="_blank">
+                                <i class="Icon Icon--linkedin"></i>
+                            </a>
+                        </li>
+                        <li class="contactsListItem">
+                            <a href="https://github.com/Comum/" target="_blank">
+                                <i class="Icon Icon--github"></i>
+                            </a>
+                        </li>
+                        <li class="contactsListItem NoList--contacts--quote">
+                            <p class="js-quote-container"></p>
+                        </li>
+                    </ul>
+                </div>
+            `;
+
+            $body.find('.js-content-section').html(html);
+            resolve();
+        })
+        .then(() => {
+            getProgrammerQuote();
+        });
+    }
+}
+
 /*
  * Template example
  * const beer = {
@@ -41,13 +102,3 @@ const markup = `
 document.body.innerHTML = markup;
  *
  */
-
-
-module.exports = {
-    addAboutButton: function (buttonContent = '', classPositioning = '') {
-        $container.append(escButton);
-    },
-    addArrowsContainer: function (buttonContent = '', classPositioning = '') {
-        $container.append(arrowsContainer);
-    }
-}

@@ -5,7 +5,16 @@
  * 
  */
 
-import {addMarginToMainMenu, removeMarginToMainMenu, initAboutMenuFunctionality, addButtonsFunctionality, initContentContainer} from './effects.js';
+import {
+    addMarginToMainMenu,
+    removeMarginToMainMenu,
+    initAboutMenuFunctionality,
+    addButtonsFunctionality,
+    initContentContainer,
+    loadPageContent,
+    containerFadeOut,
+    containerFadeIn
+} from './effects.js';
 
 let $body = $('body');
 
@@ -45,6 +54,11 @@ class Router {
                 initContentContainer('second', '.js-content-section')
                 .then(() => {
                     addMarginToMainMenu();
+                    if (id === 'contacts') {
+                        loadPageContent('contacts');
+                    } else if (id === 'projs') {
+                        console.log('load projs info')
+                    }
                 });
             }
         } else if (menuState === 'second') {
@@ -70,9 +84,15 @@ class Router {
                     });
                     break;
                 case 'contacts':
-                    initContentContainer('second', '.js-content-section')
+                    containerFadeOut('js-content-section')
                     .then(() => {
-                        console.log('load contacts info')
+                        initContentContainer('second', '.js-content-section');
+                    })
+                    .then(() => {
+                        loadPageContent('contacts');
+                    })
+                    .then(() => {
+                        containerFadeIn('js-content-section');
                     });
                     break;
                 default:
