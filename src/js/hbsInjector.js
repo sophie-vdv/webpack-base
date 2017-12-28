@@ -96,7 +96,6 @@ module.exports = {
                 let companyID;
 
                 $.each(data, function( key, val ) {
-                    console.log($(this));
                     companyID = $(this)[0].companyID;
 
                     if ($(this)[0].companyID === 'comp_personal') {
@@ -119,8 +118,6 @@ module.exports = {
 
                 $projsContainer.html(html);
             });
-    
-            console.log('load projs info loaded');
         });
     }
 }

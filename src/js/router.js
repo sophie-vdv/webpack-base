@@ -23,7 +23,9 @@ class Router {
         this.url = this.getCurrentUrl();
 
         this.init();
-        $body.on('click', '.js-menu-option', this.handleNavClick);
+        $body
+            .on('click', '.js-menu-option', this.handleNavClick)
+            .on('click', '.js-company-logo', this.handleProjClick);
     }
 
     init() {
@@ -95,6 +97,10 @@ class Router {
                     console.log('Button with unrecognized id.');
             }
         }
+    }
+
+    handleProjClick() {
+        console.log('proj click', $(this));
     }
 }
 
