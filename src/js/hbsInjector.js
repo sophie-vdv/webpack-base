@@ -14,6 +14,8 @@ const arrowsContainer = `
     </div>
 `;
 
+const projsContainer = `<div class="projsContainer js-projs-container"></div>`;
+
 function getProgrammerQuote() {
     let quote;
     let $quoteContainer = $body.find('.js-quote-container');
@@ -28,6 +30,15 @@ function getProgrammerQuote() {
             quote = JSON.parse(data.body).quote;
             $quoteContainer.html(quote);
         }
+    });
+}
+
+function addProjsContainer() {
+    let $container = $body.find('.js-content-section');
+
+    return new Promise((resolve, reject) => {
+        $container.html(projsContainer);
+        resolve();
     });
 }
 
@@ -60,7 +71,7 @@ module.exports = {
                             </a>
                         </li>
                         <li class="contactsListItem">
-                            <p class="text-italic js-quote-container"></p>
+                            <p class="text-italic m-lr-12 js-quote-container"></p>
                         </li>
                     </ul>
                 </div>
@@ -71,6 +82,45 @@ module.exports = {
         })
         .then(() => {
             getProgrammerQuote();
+        });
+    },
+    loadProjsContent: function () {
+        let $container = $body.find('.js-content-section');
+
+        addProjsContainer()
+        .then(() => {
+            $.getJSON('../json/projects.json', function (data) {
+                let $projsContainer = $container.find('.js-projs-container');
+                let html = ``;
+                let companyWrapper = ``;
+                let companyID;
+
+                $.each(data, function( key, val ) {
+                    console.log($(this));
+                    companyID = $(this)[0].companyID;
+
+                    if ($(this)[0].companyID === 'comp_personal') {
+                        companyWrapper = `
+                            <div class="companyLogo companyOnlyText cursor-pointer no-select-text js-company-logo"
+                                 data-company-id="${companyID}">
+                                <span class="text-center">Personal Projects</span>
+                            </div>
+                        `;
+                    } else {
+                        companyWrapper = `
+                            <div class="companyLogo companyLogoImage companyLogo--${companyID} cursor-pointer no-select-text js-company-logo"
+                                 data-company-id="${companyID}">
+                            </div>
+                        `;
+                    }
+
+                    html = html + companyWrapper;
+                });
+
+                $projsContainer.html(html);
+            });
+    
+            console.log('load projs info loaded');
         });
     }
 }

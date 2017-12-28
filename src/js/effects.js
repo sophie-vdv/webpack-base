@@ -1,4 +1,9 @@
-import {addAboutButton, addArrowsContainer, loadContactsContent} from './hbsInjector.js';
+import {
+    addAboutButton,
+    addArrowsContainer,
+    loadContactsContent,
+    loadProjsContent
+} from './hbsInjector.js';
 
 let $body = $('body');
 let $secondMenuContainer = $body.find('.js-content-area');
@@ -114,6 +119,9 @@ module.exports = {
             switch(pageToLoad) {
                 case 'contacts':
                     loadContactsContent();
+                    break;
+                case 'projs':
+                    loadProjsContent();
                     break;
                 default:
                     console.log('404 Page not found');

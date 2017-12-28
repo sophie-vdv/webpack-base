@@ -75,6 +75,10 @@ module.exports = {
         {
             from: 'src/rules',
             to: path.resolve(__dirname, 'dist/')
+        },
+        {
+            from: 'src/json',
+            to: path.resolve(__dirname, 'dist/json')
         }])
     ]
 };

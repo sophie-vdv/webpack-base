@@ -54,11 +54,7 @@ class Router {
                 initContentContainer('second', '.js-content-section')
                 .then(() => {
                     addMarginToMainMenu();
-                    if (id === 'contacts') {
-                        loadPageContent('contacts');
-                    } else if (id === 'projs') {
-                        console.log('load projs info')
-                    }
+                    loadPageContent(id);
                 });
             }
         } else if (menuState === 'second') {
@@ -80,7 +76,7 @@ class Router {
                 case 'projs':
                     initContentContainer('second', '.js-content-section')
                     .then(() => {
-                        console.log('load projs info')
+                        loadPageContent('projs');
                     });
                     break;
                 case 'contacts':
