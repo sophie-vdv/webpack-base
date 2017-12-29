@@ -42,6 +42,15 @@ function addProjsContainer() {
     });
 }
 
+function cleanSection(section) {
+    let $container = $body.find('.' + section);
+
+    return new Promise((resolve, reject) => {
+        $container.empty();
+        resolve();
+    });
+}
+
 module.exports = {
     addAboutButton: function (buttonContent = '', classPositioning = '') {
         $container.append(escButton);
@@ -119,6 +128,10 @@ module.exports = {
                 $projsContainer.html(html);
             });
         });
+    },
+    loadCompanyContent: function(companyID) {
+        console.log(companyID);
+        cleanSection('js-content-section');
     }
 }
 

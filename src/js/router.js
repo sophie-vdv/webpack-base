@@ -13,7 +13,9 @@ import {
     initContentContainer,
     loadPageContent,
     containerFadeOut,
-    containerFadeIn
+    containerFadeIn,
+    loadContentSequence,
+    loadCompanyProjs
 } from './effects.js';
 
 let $body = $('body');
@@ -76,22 +78,10 @@ class Router {
                     });
                     break;
                 case 'projs':
-                    initContentContainer('second', '.js-content-section')
-                    .then(() => {
-                        loadPageContent('projs');
-                    });
+                    loadContentSequence('projs');
                     break;
                 case 'contacts':
-                    containerFadeOut('js-content-section')
-                    .then(() => {
-                        initContentContainer('second', '.js-content-section');
-                    })
-                    .then(() => {
-                        loadPageContent('contacts');
-                    })
-                    .then(() => {
-                        containerFadeIn('js-content-section');
-                    });
+                    loadContentSequence('contacts');
                     break;
                 default:
                     console.log('Button with unrecognized id.');
@@ -100,7 +90,15 @@ class Router {
     }
 
     handleProjClick() {
-        console.log('proj click', $(this));
+        let companyID = $(this).attr('data-company-id');
+
+        containerFadeOut('js-content-section')
+        .then(() => {
+            loadPageContent('companyProjs', companyID);
+        })
+        .then(() => {
+            containerFadeIn('js-content-section')
+        });
     }
 }
 

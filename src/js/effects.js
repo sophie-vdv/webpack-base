@@ -2,7 +2,8 @@ import {
     addAboutButton,
     addArrowsContainer,
     loadContactsContent,
-    loadProjsContent
+    loadProjsContent,
+    loadCompanyContent
 } from './hbsInjector.js';
 
 let $body = $('body');
@@ -106,7 +107,7 @@ module.exports = {
             }
         });
     },
-    initContentContainer(menuView, areaToEmpty = '.js-content-area') {
+    initContentContainer: function(menuView, areaToEmpty = '.js-content-area') {
         return new Promise((resolve, reject) => {
             $secondMenuContainer = $body.find(areaToEmpty).empty();
             $body.attr('data-menu-in-view', menuView);
@@ -114,7 +115,7 @@ module.exports = {
             resolve();
         });
     },
-    loadPageContent(pageToLoad) {
+    loadPageContent: function(pageToLoad, companyID = '') {
         return new Promise((resolve, reject) => {
             switch(pageToLoad) {
                 case 'contacts':
@@ -123,10 +124,25 @@ module.exports = {
                 case 'projs':
                     loadProjsContent();
                     break;
+                case 'companyProjs':
+                    loadCompanyContent(companyID);
+                    break;
                 default:
                     console.log('404 Page not found');
             }
             resolve();
+        });
+    },
+    loadContentSequence: function(contentToLoad) {
+        module.exports.containerFadeOut('js-content-section')
+        .then(() => {
+            module.exports.initContentContainer('second', '.js-content-section')
+        })
+        .then(() => {
+            module.exports.loadPageContent(contentToLoad);
+        })
+        .then(() => {
+            module.exports.containerFadeIn('js-content-section');
         });
     }
 }
