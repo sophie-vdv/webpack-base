@@ -51,6 +51,22 @@ function cleanSection(section) {
     });
 }
 
+function addCompanyWrapper() {
+    return new Promise((resolve, reject) => {
+        let $container = $body.find('.js-content-section');
+        const html = `
+            <div class="companyHeader">
+                <a class="companyHeaderLogoImageContainer js-company-logo-image" href="" target="_blank"></a>
+                <span class="text-big-header text-color js-company-logo-name"></span>
+            </div>
+            <div class="companyProjects js-company-projects"></div>
+        `;
+
+        $container.html(html);
+        resolve();
+    });
+}
+
 module.exports = {
     addAboutButton: function (buttonContent = '', classPositioning = '') {
         $container.append(escButton);
@@ -134,10 +150,57 @@ module.exports = {
 
         cleanSection('js-content-section')
         .then(() => {
+            addCompanyWrapper();
+        })
+        .then(() => {
             $.getJSON('json/projects.json', function(data) {
+                let $container = $body.find('.js-company-projects');
+                let $companyLogoContainer = $body.find('.js-company-logo-image');
+                let $companyNameContainer = $body.find('.js-company-logo-name');
+                let html = ``;
+                let projectHtml;
+                let companyNameClass = 'companyNameImage--';
+                let companySite;
+
                 $.each(data, function( key, val ) {
                     if (companyID === this.companyID) {
-                        console.log(this);
+
+                        if (companyID === 'comp_personal') {
+                            companyNameClass = 'display-none';
+                        } else {
+                            companyNameClass = companyNameClass + this.companyName.split(' ').join('_');
+                        }
+
+                        companySite = this.companySite;
+                        $companyLogoContainer
+                            .addClass(companyNameClass)
+                            .attr('href', companySite);
+                        $companyNameContainer.text(this.companyName);
+
+                        this.projects.forEach(project => {
+                            let projectName = project.projectName;
+                            let projectImage;
+                            let projectPlaceHolder = '';
+                            let projectID = project.projectID;
+
+                            if (project.projectImages.length) {
+                                projectImage = 'projectImage--' + project.projectImages[0].split('.')[0];
+                            } else {
+                                projectImage = 'projectWithNoImage';
+                                projectPlaceHolder = 'Image not available';
+                            }
+
+                            projectHtml = `
+                                <div class="companyProjectBlockArea text-color"
+                                     data-project-id="${projectID}">
+                                    <div class="companyProjectImage ${projectImage}">${projectPlaceHolder}</div>
+                                    <div class="companyProjectName">${projectName}</div>
+                                </div>
+                            `;
+
+                            html = html + projectHtml;
+                            console.log(project);
+                        });
                         /*infoProject = this.projects.
                                     filter(function(proj) {
                                         if (proj.projectID == projID) {
@@ -147,6 +210,8 @@ module.exports = {
                         loadProjectTemplate(infoProject); */
                     }
                 });
+
+                $container.html(html);
             });
         });
     }
