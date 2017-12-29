@@ -28,7 +28,12 @@ const projectWrapper = `
     <div class="projectDetailsContainer">
         <div class="projectDetailsHeader text-small-header text-color no-select-text js-project-name"></div>
         <div class="projectDetailsContent">
-            <div class="projectDetailsDescription"></div>
+            <div class="projectDetailsDescription">
+                <div class="projectDetailsDecriptionTitle text-color text-center">Specifications</div>
+                <div class="projectDetailsDecriptionContent text-color js-project-description-content"></div>
+                <div class="projectDetailsDecriptionTechonologiesTitle text-color text-center">Technologies</div>
+                <div class="projectDetailsDecriptionTechonologiesContent text-color text-center js-project-description-technologies-content"></div>
+            </div>
             <div class="projectDetailsImage"></div>
         </div>
     </div>
