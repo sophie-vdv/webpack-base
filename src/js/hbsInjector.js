@@ -130,8 +130,25 @@ module.exports = {
         });
     },
     loadCompanyContent: function(companyID) {
-        console.log(companyID);
-        cleanSection('js-content-section');
+        let companyProjects;
+
+        cleanSection('js-content-section')
+        .then(() => {
+            $.getJSON('json/projects.json', function(data) {
+                $.each(data, function( key, val ) {
+                    if (companyID === this.companyID) {
+                        console.log(this);
+                        /*infoProject = this.projects.
+                                    filter(function(proj) {
+                                        if (proj.projectID == projID) {
+                                        return proj;
+                                        }
+                                    });
+                        loadProjectTemplate(infoProject); */
+                    }
+                });
+            });
+        });
     }
 }
 
