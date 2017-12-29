@@ -34,7 +34,21 @@ const projectWrapper = `
                 <div class="projectDetailsDecriptionTechonologiesTitle text-color text-center">Technologies</div>
                 <div class="projectDetailsDecriptionTechonologiesContent text-color text-center js-project-description-technologies-content"></div>
             </div>
-            <div class="projectDetailsImage"></div>
+            <div class="projectDetailsImage">
+                <div class="projectDetailsImageContainer">
+                    <div class="projectDetailsImageContentContainer">
+                        <div class="projectDetailsImageArrowContainer js-project-image-area"
+                             data-image-number=""
+                             data-image-count=""
+                             data-image-name="">
+                                <div class="projectDetailsImageArrow leftArrow js-image-arrow">&#8701;</div>
+                                <div class="projectDetailsImageArrow rightArrow js-image-arrow">&#8702;</div>
+                                <div class="bottomOverlay projectDetailsImageArrowOverlay js-image-bottomOverlay"></div>
+                                <div class="topOverlay projectDetailsImageArrowOverlay js-image-topOverlay"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 `;
