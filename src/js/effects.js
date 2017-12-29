@@ -3,7 +3,8 @@ import {
     addArrowsContainer,
     loadContactsContent,
     loadProjsContent,
-    loadCompanyContent
+    loadCompanyContent,
+    loadProjContent
 } from './hbsInjector.js';
 
 let $body = $('body');
@@ -115,7 +116,7 @@ module.exports = {
             resolve();
         });
     },
-    loadPageContent: function(pageToLoad, companyID = '') {
+    loadPageContent: function(pageToLoad, detailID = '') {
         return new Promise((resolve, reject) => {
             switch(pageToLoad) {
                 case 'contacts':
@@ -125,7 +126,10 @@ module.exports = {
                     loadProjsContent();
                     break;
                 case 'companyProjs':
-                    loadCompanyContent(companyID);
+                    loadCompanyContent(detailID);
+                    break;
+                case 'projDetails':
+                    loadProjContent(detailID);
                     break;
                 default:
                     console.log('404 Page not found');

@@ -27,7 +27,8 @@ class Router {
         this.init();
         $body
             .on('click', '.js-menu-option', this.handleNavClick)
-            .on('click', '.js-company-logo', this.handleProjClick);
+            .on('click', '.js-company-logo', this.handleCompanyClick)
+            .on('click', '.js-company-project-block-area', this.handleProjClick);
     }
 
     init() {
@@ -39,8 +40,9 @@ class Router {
     }
 
     handleNavClick() {
+        const id = $(this).attr('id');
+
         let menuState = $body.attr('data-menu-in-view');
-        let id = $(this).attr('id');
         let $contentArea;
         let nameClicked = false;
 
@@ -89,12 +91,24 @@ class Router {
         }
     }
 
-    handleProjClick() {
-        let companyID = $(this).attr('data-company-id');
+    handleCompanyClick() {
+        const companyID = $(this).attr('data-company-id');
 
         containerFadeOut('js-content-section')
         .then(() => {
             loadPageContent('companyProjs', companyID);
+        })
+        .then(() => {
+            containerFadeIn('js-content-section')
+        });
+    }
+
+    handleProjClick() {
+        const projectID = $(this).attr('data-project-id');
+
+        containerFadeOut('js-content-section')
+        .then(() => {
+            loadPageContent('projDetails', projectID);
         })
         .then(() => {
             containerFadeIn('js-content-section')

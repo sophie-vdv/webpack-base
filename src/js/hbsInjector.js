@@ -16,6 +16,24 @@ const arrowsContainer = `
 
 const projsContainer = `<div class="projsContainer js-projs-container"></div>`;
 
+const companyWrapper = `
+    <div class="companyHeader">
+        <a class="companyHeaderLogoImageContainer js-company-logo-image" href="" target="_blank"></a>
+        <span class="text-big-header text-color js-company-logo-name"></span>
+    </div>
+    <div class="companyProjects js-company-projects"></div>
+`;
+
+const projectWrapper = `
+    <div class="projectDetailsContainer">
+        <div class="projectDetailsHeader text-small-header text-color no-select-text js-project-name"></div>
+        <div class="projectDetailsContent">
+            <div class="projectDetailsDescription"></div>
+            <div class="projectDetailsImage"></div>
+        </div>
+    </div>
+`;
+
 function getProgrammerQuote() {
     let quote;
     let $quoteContainer = $body.find('.js-quote-container');
@@ -23,11 +41,11 @@ function getProgrammerQuote() {
     $.ajax({
         url: 'http://cors-proxy.htmldriven.com/?url=http://thoughtsoncoding.com/api/1.0/random.json',
         error: function () {
-            quote = 'Insert cheeky quote here.';
+            quote = '"Insert cheeky quote here."';
             $quoteContainer.html(quote);
         },
         success: function (data) {
-            quote = JSON.parse(data.body).quote;
+            quote = '"' + JSON.parse(data.body).quote + '"';
             $quoteContainer.html(quote);
         }
     });
@@ -51,16 +69,21 @@ function cleanSection(section) {
     });
 }
 
-function addCompanyWrapper() {
+function addWrapper(wrapper) {
     return new Promise((resolve, reject) => {
         let $container = $body.find('.js-content-section');
-        const html = `
-            <div class="companyHeader">
-                <a class="companyHeaderLogoImageContainer js-company-logo-image" href="" target="_blank"></a>
-                <span class="text-big-header text-color js-company-logo-name"></span>
-            </div>
-            <div class="companyProjects js-company-projects"></div>
-        `;
+        let html = ``;
+
+        switch(wrapper) {
+            case 'company':
+                html = companyWrapper;
+                break;
+            case 'project':
+                html = projectWrapper;
+                break;
+            default:
+                html = ``;
+        }
 
         $container.html(html);
         resolve();
@@ -150,7 +173,7 @@ module.exports = {
 
         cleanSection('js-content-section')
         .then(() => {
-            addCompanyWrapper();
+            addWrapper('company');
         })
         .then(() => {
             $.getJSON('json/projects.json', function(data) {
@@ -191,7 +214,7 @@ module.exports = {
                             }
 
                             projectHtml = `
-                                <div class="companyProjectBlockArea text-color"
+                                <div class="companyProjectBlockArea text-color js-company-project-block-area"
                                      data-project-id="${projectID}">
                                     <div class="companyProjectImage ${projectImage}">${projectPlaceHolder}</div>
                                     <div class="companyProjectName">${projectName}</div>
@@ -199,7 +222,6 @@ module.exports = {
                             `;
 
                             html = html + projectHtml;
-                            console.log(project);
                         });
                         /*infoProject = this.projects.
                                     filter(function(proj) {
@@ -210,9 +232,16 @@ module.exports = {
                         loadProjectTemplate(infoProject); */
                     }
                 });
-
                 $container.html(html);
             });
+        });
+    },
+    loadProjContent: function() {
+        console.log('working');
+
+        cleanSection('js-content-section')
+        .then(() => {
+            addWrapper('project'); 
         });
     }
 }
