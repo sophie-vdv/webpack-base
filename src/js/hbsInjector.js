@@ -38,7 +38,7 @@ const projectWrapper = `
                 <div class="projectDetailsImageContainer">
                     <div class="projectDetailsImageContentContainer">
                         <div class="projectDetailsImageArrowContainer js-project-image-area"
-                             data-image-number=""
+                             data-image-number="0"
                              data-image-count=""
                              data-image-name="">
                                 <div class="projectDetailsImageArrow leftArrow js-image-arrow">&#8701;</div>
@@ -106,6 +106,31 @@ function addWrapper(wrapper) {
 
         $container.html(html);
         resolve();
+    });
+}
+
+function initProjectParameters(projID) {
+    let companyID = projID.split('-')[0];
+    let infoProject;
+    let $container = $body.find('.js-content-section');
+    let $header = $container.find('.js-project-name');
+    let $specs = $container.find('.js-project-description-content');
+
+    $.getJSON('json/projects.json', function(data) {
+        $.each(data, function( key, val ) {
+            if (companyID === this.companyID) {
+                infoProject = this.projects.filter(function (proj) {
+                    if (proj.projectID == projID) {
+                        return proj;
+                    }
+                });
+            }
+        });
+
+        $header.text(infoProject[0].projectName);
+        $specs.text(infoProject[0].projectDescription);
+
+        console.log('project', infoProject[0]);
     });
 }
 
@@ -255,12 +280,15 @@ module.exports = {
             });
         });
     },
-    loadProjContent: function() {
-        console.log('working');
+    loadProjContent: function(detailID) {
+        console.log('working', detailID);
 
         cleanSection('js-content-section')
         .then(() => {
             addWrapper('project'); 
+        })
+        .then(() => {
+            initProjectParameters(detailID);
         });
     }
 }
