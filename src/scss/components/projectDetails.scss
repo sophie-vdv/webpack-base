@@ -256,3 +256,99 @@
         overflow-y: auto;
     }
 }
+
+.projectDetailsDecriptionTechonologiesContentItem {
+    width: 80%;
+    height: 30px;
+  
+    margin-bottom: 8px;
+    margin-left: 8px;
+  
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.projectDetailsDecriptionTechonologiesContentItem:first-child {
+    margin-top: 8px;
+}
+
+.projectDetailsDecriptionTechonologiesContentItemName {
+    width: calc(80% - 38px);
+
+    margin-left: 8px;
+}
+
+.projectDetailsDecriptionTechonologiesContentItemIcon {
+    width: 30px;
+    height: 100%;
+
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
+.techIcon_icon_angular {
+    background-image: url("/src/img/icon_angular.svg");
+}
+
+.techIcon_icon_css3 {
+    background-image: url("/src/img/icon_css3.svg");
+}
+
+.techIcon_icon_ethereum {
+    background-image: url("/src/img/icon_ethereum.svg");
+}
+
+.techIcon_icon_grunt {
+    background-image: url("/src/img/icon_grunt.svg");
+}
+
+.techIcon_icon_html5 {
+    background-image: url("/src/img/icon_html5.svg");
+}
+
+.techIcon_icon_javascript {
+    background-image: url("/src/img/icon_javascript.svg");
+}
+
+.techIcon_icon_jquery {
+    background-image: url("/src/img/icon_jquery.svg");
+}
+
+.techIcon_icon_less {
+    background-image: url("/src/img/icon_less.svg");
+}
+
+.techIcon_icon_mssql {
+    background-image: url("/src/img/icon_mssql.svg");
+}
+
+.techIcon_icon_mysql {
+    background-image: url("/src/img/icon_mysql.svg");
+}
+
+.techIcon_icon_nodejs {
+    background-image: url("/src/img/icon_nodejs.svg");
+}
+
+.techIcon_icon_php {
+    background-image: url("/src/img/icon_php.svg");
+}
+
+.techIcon_icon_python {
+    background-image: url("/src/img/icon_python.svg");
+}
+
+.techIcon_icon_react {
+    background-image: url("/src/img/icon_react.svg");
+}
+
+.techIcon_icon_scss {
+    background-image: url("/src/img/icon_scss.svg");
+}
+
+.techIcon_icon_solidity {
+    background-image: url("/src/img/icon_solidity.svg");
+}

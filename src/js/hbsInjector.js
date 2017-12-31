@@ -115,6 +115,7 @@ function initProjectParameters(projID) {
     let $container = $body.find('.js-content-section');
     let $header = $container.find('.js-project-name');
     let $specs = $container.find('.js-project-description-content');
+    let $techs = $container.find('.js-project-description-technologies-content');
 
     $.getJSON('json/projects.json', function(data) {
         $.each(data, function( key, val ) {
@@ -129,6 +130,21 @@ function initProjectParameters(projID) {
 
         $header.text(infoProject[0].projectName);
         $specs.text(infoProject[0].projectDescription);
+
+        infoProject[0].projectTechnologies.forEach((tech) => {
+            const techName = tech.name;
+            const techIcon = tech.icon;
+            const iconClass = 'techIcon_' + techIcon.split('.')[0];
+            const html = `
+                <div class="projectDetailsDecriptionTechonologiesContentItem">
+                    <div class="projectDetailsDecriptionTechonologiesContentItemIcon ${iconClass}"></div>
+                    <div class="projectDetailsDecriptionTechonologiesContentItemName text-left text-color">${techName}</div>
+                </div>
+            `;
+
+            $techs.append(html);
+            console.log(tech);
+        });
 
         console.log('project', infoProject[0]);
     });

@@ -159,6 +159,10 @@
               "icon": "icon_jquery.svg"
             },
             {
+              "name": "React",
+              "icon": "icon_react.svg"
+            },
+            {
               "name": "HTML5",
               "icon": "icon_html5.svg"
             },
