@@ -303,8 +303,6 @@ module.exports = {
         });
     },
     loadProjContent: function(detailID) {
-        console.log('working', detailID);
-
         cleanSection('js-content-section')
         .then(() => {
             addWrapper('project'); 

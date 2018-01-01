@@ -10,6 +10,8 @@ import {
 let $body = $('body');
 let $secondMenuContainer = $body.find('.js-content-area');
 
+const ANIMATION_DELAY = 750;
+
 function resetWebPage() {
     location.reload();
 }
@@ -31,6 +33,40 @@ function decrementPageNumber() {
         pageNumber--;
         $secondMenuContainer.attr('data-page-number', pageNumber);
     }
+}
+
+function closeScreen() {
+    let $bottomOverlay = $secondMenuContainer.find('.js-image-bottomOverlay');
+    let $topOverlay = $secondMenuContainer.find('.js-image-topOverlay');
+
+    return new Promise((resolve, reject) => {
+        $bottomOverlay.animate({
+            bottom: '0'
+        }, ANIMATION_DELAY);
+      
+        $topOverlay.animate({
+            top: '0'
+        }, ANIMATION_DELAY, function () {
+            resolve();
+        });
+    });
+}
+
+function openScreen() {
+    let $bottomOverlay = $secondMenuContainer.find('.js-image-bottomOverlay');
+    let $topOverlay = $secondMenuContainer.find('.js-image-topOverlay');
+
+    return new Promise((resolve, reject) => {
+        $bottomOverlay.animate({
+            bottom: '-50%'
+        }, ANIMATION_DELAY);
+      
+        $topOverlay.animate({
+            top: '-50%'
+        }, ANIMATION_DELAY, function () {
+            resolve();
+        });
+    });
 }
 
 module.exports = {
@@ -81,7 +117,7 @@ module.exports = {
             .on('click', '.js-about-left-arrow', decrementPageNumber)
             .on('click', '.js-about-right-arrow', incrementPageNumber);
 
-        $(document).keydown(function(e) {
+        $(document).keydown(function (e) {
             if (getBodyViewMode() === 'about') {
                 if(e.keyCode === 27) {
                     $secondMenuContainer.find('.js-close-about-area').addClass('buttonBeingPressed');
@@ -95,7 +131,7 @@ module.exports = {
             }
         });
 
-        $(document).keyup(function(e) {
+        $(document).keyup(function (e) {
             if (getBodyViewMode() === 'about') {
                 if(e.keyCode === 27) {
                     $secondMenuContainer.find('.js-close-about-area').removeClass('buttonBeingPressed');
@@ -108,7 +144,7 @@ module.exports = {
             }
         });
     },
-    initContentContainer: function(menuView, areaToEmpty = '.js-content-area') {
+    initContentContainer: function (menuView, areaToEmpty = '.js-content-area') {
         return new Promise((resolve, reject) => {
             $secondMenuContainer = $body.find(areaToEmpty).empty();
             $body.attr('data-menu-in-view', menuView);
@@ -116,7 +152,7 @@ module.exports = {
             resolve();
         });
     },
-    loadPageContent: function(pageToLoad, detailID = '') {
+    loadPageContent: function (pageToLoad, detailID = '') {
         return new Promise((resolve, reject) => {
             switch(pageToLoad) {
                 case 'contacts':
@@ -137,7 +173,7 @@ module.exports = {
             resolve();
         });
     },
-    loadContentSequence: function(contentToLoad) {
+    loadContentSequence: function (contentToLoad) {
         module.exports.containerFadeOut('js-content-section')
         .then(() => {
             module.exports.initContentContainer('second', '.js-content-section')
@@ -147,6 +183,20 @@ module.exports = {
         })
         .then(() => {
             module.exports.containerFadeIn('js-content-section');
+        });
+    },
+    loadNewImage: function (newImageNumber, newImage, $container) {
+        closeScreen()
+        .then(() => {
+            return new Promise((resolve, reject) => {
+                $container.attr('data-image-number', newImageNumber);
+                $container.css('background-image', 'url(' + newImage + ')');
+
+                resolve();
+            });
+        })
+        .then(() => {
+            openScreen();
         });
     }
 }
