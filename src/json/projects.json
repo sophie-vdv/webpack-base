@@ -135,7 +135,7 @@
         {
           "projectID": "comp_thisplace-1",
           "projectName": "Delhaize",
-          "projectDescription": "Front end work on the web store for the supermarket chain Delhaize.<br><br><a href='https://www.delhaize.be' class='projectInfo--description--inlineLink' target='_blank'>Delhaize.be</a><br><br><a href='https://www.ab.gr' class='projectInfo--description--inlineLink' target='_blank'>ab.gr</a><br><br><a href='https://www.maxi.rs' class='projectInfo--description--inlineLink' target='_blank'>Maxi.rs</a>",
+          "projectDescription": "Front end work on the web store for the supermarket chain Delhaize.<br><br><a href='https://www.delhaize.be' class='projectDetailsDecriptionContentLink' target='_blank'>Delhaize.be</a><br><br><a href='https://www.ab.gr' class='projectDetailsDecriptionContentLink' target='_blank'>ab.gr</a><br><br><a href='https://www.maxi.rs' class='projectDetailsDecriptionContentLink' target='_blank'>Maxi.rs</a>",
           "projectImages": [
             "ThisPlace_Delhaize_0.png",
             "ThisPlace_Delhaize_1.png",

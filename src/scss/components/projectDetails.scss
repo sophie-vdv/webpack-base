@@ -352,3 +352,14 @@
 .techIcon_icon_solidity {
     background-image: url("/src/img/icon_solidity.svg");
 }
+
+.projectDetailsDecriptionContentLink {
+    margin-top: 4px;
+
+    color: white;
+    text-decoration: none;
+}
+
+.projectDetailsDecriptionContentLink:hover {
+    text-decoration: underline;
+}
