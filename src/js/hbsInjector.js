@@ -118,6 +118,7 @@ function initProjectParameters(projID) {
     let $techs = $container.find('.js-project-description-technologies-content');
     let $projectImages = $container.find('.js-project-image-area');
     let imagePath;
+    let imageName;
 
     $.getJSON('json/projects.json', function(data) {
         $.each(data, function( key, val ) {
@@ -148,7 +149,9 @@ function initProjectParameters(projID) {
         });
 
         imagePath = '/src/img/' + infoProject[0].projectImages[0];
+        imageName = infoProject[0].projectImages[0].split('0')[0];
         $projectImages.attr('data-image-count', infoProject[0].projectImages.length);
+        $projectImages.attr('data-image-name', imageName);
         $projectImages.css('background-image', 'url(' + imagePath + ')');
     });
 }
