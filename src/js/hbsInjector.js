@@ -148,8 +148,13 @@ function initProjectParameters(projID) {
             $techs.append(html);
         });
 
-        imagePath = '/src/img/' + infoProject[0].projectImages[0];
-        imageName = infoProject[0].projectImages[0].split('0')[0];
+        if (infoProject[0].projectImages.length) {
+            imagePath = '/src/img/' + infoProject[0].projectImages[0];
+            imageName = infoProject[0].projectImages[0].split('0')[0];
+        } else {
+            imagePath = '/src/img/no-results.png';
+            imageName = 'no-results';
+        }
         $projectImages.attr('data-image-count', infoProject[0].projectImages.length);
         $projectImages.attr('data-image-name', imageName);
         $projectImages.css('background-image', 'url(' + imagePath + ')');

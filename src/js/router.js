@@ -125,22 +125,24 @@ class Router {
         const imageNumber = $(this).parent().attr('data-image-number');
         const imageLength = $(this).parent().attr('data-image-count');
         
-        if ($(this).hasClass('leftArrow')) {
-            if (parseInt(imageNumber, 10) === 0 ) {
-                newImageNumber = parseInt(imageLength, 10) - 1;
-            } else {
-                newImageNumber = parseInt(imageNumber, 10) - 1;
+        if (imageName !== 'no-results') {
+            if ($(this).hasClass('leftArrow')) {
+                if (parseInt(imageNumber, 10) === 0 ) {
+                    newImageNumber = parseInt(imageLength, 10) - 1;
+                } else {
+                    newImageNumber = parseInt(imageNumber, 10) - 1;
+                }
+            } else if ($(this).hasClass('rightArrow')) {
+                if (parseInt(imageNumber, 10) === (parseInt(imageLength, 10) - 1) ) {
+                    newImageNumber = 0;
+                } else {
+                    newImageNumber = parseInt(imageNumber, 10) + 1;
+                }
             }
-        } else if ($(this).hasClass('rightArrow')) {
-            if (parseInt(imageNumber, 10) === (parseInt(imageLength, 10) - 1) ) {
-                newImageNumber = 0;
-            } else {
-                newImageNumber = parseInt(imageNumber, 10) + 1;
-            }
+    
+            newImage = '/src/img/' + imageName + newImageNumber + '.png';
+            loadNewImage(newImageNumber, newImage, $(this).parent());
         }
-
-        newImage = '/src/img/' + imageName + newImageNumber + '.png';
-        loadNewImage(newImageNumber, newImage, $(this).parent());
     }
 }
 
