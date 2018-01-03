@@ -21,16 +21,31 @@ import {
 
 let $body = $('body');
 
+const HOOK_CONTENT_AREA = 'js-content-area';
+const HOOK_CONTENT_SECTION = 'js-content-section';
+const HOOK_CONTENT_SECTION_CLASS = '.' + HOOK_CONTENT_SECTION;
+const HOOK_MENU_OPTION = '.js-menu-option';
+const HOOK_COMPANY_LOGO = '.js-company-logo';
+const HOOK_COMPANY_PROJECT_BLOCK_AREA = '.js-company-project-block-area';
+const HOOK_IMAGE_ARROW = '.js-image-arrow';
+
+const DATA_MENU_IN_VIEW = 'data-menu-in-view';
+const DATA_COMPANY_ID = 'data-company-id';
+const DATA_PROJECT_ID = 'data-project-id';
+const DATA_IMAGE_NAME = 'data-image-name';
+const DATA_IMAGE_NUMBER = 'data-image-number';
+const DATA_IMAGE_COUNT = 'data-image-count';
+
 class Router {
     constructor() {
         this.url = this.getCurrentUrl();
 
         this.init();
         $body
-            .on('click', '.js-menu-option', this.handleNavClick)
-            .on('click', '.js-company-logo', this.handleCompanyClick)
-            .on('click', '.js-company-project-block-area', this.handleProjClick)
-            .on('click', '.js-image-arrow', this.handleArrowClick);
+            .on('click', HOOK_MENU_OPTION, this.handleNavClick)
+            .on('click', HOOK_COMPANY_LOGO, this.handleCompanyClick)
+            .on('click', HOOK_COMPANY_PROJECT_BLOCK_AREA, this.handleProjClick)
+            .on('click', HOOK_IMAGE_ARROW, this.handleArrowClick);
     }
 
     init() {
@@ -44,41 +59,47 @@ class Router {
     handleNavClick() {
         const id = $(this).attr('id');
 
-        let menuState = $body.attr('data-menu-in-view');
+        let menuState = $body.attr(DATA_MENU_IN_VIEW);
         let $contentArea;
         let nameClicked = false;
 
         if (menuState === 'first') {
             if (id === 'about') {
-                initContentContainer('about')
+                return initContentContainer('about')
                 .then(() => {
-                    initAboutMenuFunctionality();
+                    return initAboutMenuFunctionality();
                 })
                 .then(() => {
                     addButtonsFunctionality();
                     addMarginToMainMenu();
                 });
             } else {
-                initContentContainer('second', '.js-content-section')
+                initContentContainer('second', HOOK_CONTENT_SECTION_CLASS)
                 .then(() => {
                     addMarginToMainMenu();
-                    loadPageContent(id);
+                    return loadPageContent(id);
                 });
             }
         } else if (menuState === 'second') {
             switch(id) {
                 case 'name':
                     nameClicked = true;
-                    $body.attr('data-menu-in-view', 'first');
+                    $body.attr(DATA_MENU_IN_VIEW, 'first');
                     removeMarginToMainMenu();
                     break;
                 case 'about':
-                    initContentContainer('about')
+                    return containerFadeOut(HOOK_CONTENT_AREA)
                     .then(() => {
-                        initAboutMenuFunctionality();
+                        return initContentContainer('about');
+                    })
+                    .then(() => {
+                        return initAboutMenuFunctionality();
                     })
                     .then(() => {
                         addButtonsFunctionality();
+                    })
+                    .then(() => {
+                        return containerFadeIn(HOOK_CONTENT_AREA);
                     });
                     break;
                 case 'projs':
@@ -94,26 +115,26 @@ class Router {
     }
 
     handleCompanyClick() {
-        const companyID = $(this).attr('data-company-id');
+        const companyID = $(this).attr(DATA_COMPANY_ID);
 
-        containerFadeOut('js-content-section')
+        return containerFadeOut(HOOK_CONTENT_SECTION)
         .then(() => {
-            loadPageContent('companyProjs', companyID);
+            return loadPageContent('companyProjs', companyID);
         })
         .then(() => {
-            containerFadeIn('js-content-section')
+            return containerFadeIn(HOOK_CONTENT_SECTION)
         });
     }
 
     handleProjClick() {
-        const projectID = $(this).attr('data-project-id');
+        const projectID = $(this).attr(DATA_PROJECT_ID);
 
-        containerFadeOut('js-content-section')
+        return containerFadeOut(HOOK_CONTENT_SECTION)
         .then(() => {
-            loadPageContent('projDetails', projectID);
+            return loadPageContent('projDetails', projectID);
         })
         .then(() => {
-            containerFadeIn('js-content-section')
+            return containerFadeIn(HOOK_CONTENT_SECTION)
         });
     }
 
@@ -121,9 +142,9 @@ class Router {
         let newImage;
         let newImageNumber;
         
-        const imageName = $(this).parent().attr('data-image-name');
-        const imageNumber = $(this).parent().attr('data-image-number');
-        const imageLength = $(this).parent().attr('data-image-count');
+        const imageName = $(this).parent().attr(DATA_IMAGE_NAME);
+        const imageNumber = $(this).parent().attr(DATA_IMAGE_NUMBER);
+        const imageLength = $(this).parent().attr(DATA_IMAGE_COUNT);
         
         if (imageName !== 'no-results') {
             if ($(this).hasClass('leftArrow')) {
