@@ -242,9 +242,9 @@ module.exports = {
     loadCompanyContent: function(companyID) {
         let companyProjects;
 
-        cleanSection('js-content-section')
+        return cleanSection('js-content-section')
         .then(() => {
-            addWrapper('company');
+            return addWrapper('company');
         })
         .then(() => {
             $.getJSON('json/projects.json', function(data) {
@@ -294,13 +294,6 @@ module.exports = {
 
                             html = html + projectHtml;
                         });
-                        /*infoProject = this.projects.
-                                    filter(function(proj) {
-                                        if (proj.projectID == projID) {
-                                        return proj;
-                                        }
-                                    });
-                        loadProjectTemplate(infoProject); */
                     }
                 });
                 $container.html(html);
@@ -308,40 +301,12 @@ module.exports = {
         });
     },
     loadProjContent: function(detailID) {
-        cleanSection('js-content-section')
+        return cleanSection('js-content-section')
         .then(() => {
-            addWrapper('project'); 
+            return addWrapper('project'); 
         })
         .then(() => {
             initProjectParameters(detailID);
         });
     }
 }
-
-/*
- * Template example
- * const beer = {
-    name: 'Belgian Wit',
-    brewery: `Steam Whistle Brewery`,
-    keywords: ['pale', 'cloudy', 'spiced', 'crisp']
-};
-
-function renderKeywords(keywords) {
-    return `
-    <ul>
-        ${keywords.map(keyword => `<li>${keyword}</li>`)}
-    </ul>
-    `;
-}
-
-const markup = `
-<div class="beer">
-    <h2>${beer.name}</h2>
-    <p class="brewery">${beer.brewery}</p>
-    ${renderKeywords(beer.keywords).join('')}
-</div>
-`;
-
-document.body.innerHTML = markup;
- *
- */

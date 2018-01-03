@@ -7,8 +7,25 @@ import {
     loadProjContent
 } from './hbsInjector.js';
 
+const HOOK_CONTENT_AREA = 'js-content-area';
+const HOOK_CONTENT_AREA_CLASS = '.' + HOOK_CONTENT_AREA;
+const HOOK_CONTENT_SECTION = 'js-content-section';
+const HOOK_CONTENT_SECTION_CLASS = '.' + HOOK_CONTENT_SECTION;
+const HOOK_IMAGE_BOTTOMOVERLAY = '.js-image-bottomOverlay';
+const HOOK_IMAGE_TOPOVERLAY = '.js-image-topOverlay';
+const HOOK_MAIN_MENU = '.js-main-menu';
+const HOOK_CLOSE_ABOUT_AREA = '.js-close-about-area';
+const HOOK_ABOUT_LEFT_ARROW = '.js-about-left-arrow';
+const HOOK_ABOUT_RIGHT_ARROW = '.js-about-right-arrow';
+
+const CLASS_BUTTON_BEING_PRESSED = 'buttonBeingPressed';
+
+const DATA_MENU_IN_VIEW = 'data-menu-in-view';
+const DATA_PAGE_NUMBER = 'data-page-number';
+const DATA_IMAGE_NUMBER = 'data-image-number';
+
 let $body = $('body');
-let $secondMenuContainer = $body.find('.js-content-area');
+let $secondMenuContainer = $body.find(HOOK_CONTENT_AREA_CLASS);
 
 const ANIMATION_DELAY = 750;
 
@@ -17,27 +34,27 @@ function resetWebPage() {
 }
 
 function getBodyViewMode() {
-    return $body.attr('data-menu-in-view');
+    return $body.attr(DATA_MENU_IN_VIEW);
 }
 
 function incrementPageNumber() {
-    let pageNumber = parseInt($secondMenuContainer.attr('data-page-number'), 10) + 1;
+    let pageNumber = parseInt($secondMenuContainer.attr(DATA_PAGE_NUMBER), 10) + 1;
     
-    $secondMenuContainer.attr('data-page-number', pageNumber);
+    $secondMenuContainer.attr(DATA_PAGE_NUMBER, pageNumber);
 }
 
 function decrementPageNumber() {
-    let pageNumber = $secondMenuContainer.attr('data-page-number');
+    let pageNumber = $secondMenuContainer.attr(DATA_PAGE_NUMBER);
 
     if (pageNumber > 0) {
         pageNumber--;
-        $secondMenuContainer.attr('data-page-number', pageNumber);
+        $secondMenuContainer.attr(DATA_PAGE_NUMBER, pageNumber);
     }
 }
 
 function closeScreen() {
-    let $bottomOverlay = $secondMenuContainer.find('.js-image-bottomOverlay');
-    let $topOverlay = $secondMenuContainer.find('.js-image-topOverlay');
+    let $bottomOverlay = $secondMenuContainer.find(HOOK_IMAGE_BOTTOMOVERLAY);
+    let $topOverlay = $secondMenuContainer.find(HOOK_IMAGE_TOPOVERLAY);
 
     return new Promise((resolve, reject) => {
         $bottomOverlay.animate({
@@ -53,8 +70,8 @@ function closeScreen() {
 }
 
 function openScreen() {
-    let $bottomOverlay = $secondMenuContainer.find('.js-image-bottomOverlay');
-    let $topOverlay = $secondMenuContainer.find('.js-image-topOverlay');
+    let $bottomOverlay = $secondMenuContainer.find(HOOK_IMAGE_BOTTOMOVERLAY);
+    let $topOverlay = $secondMenuContainer.find(HOOK_IMAGE_TOPOVERLAY);
 
     return new Promise((resolve, reject) => {
         $bottomOverlay.animate({
@@ -71,18 +88,18 @@ function openScreen() {
 
 module.exports = {
     addMarginToMainMenu: function () {
-        let $mainContainer = $body.find('.js-main-menu');
+        let $mainContainer = $body.find(HOOK_MAIN_MENU);
 
         $mainContainer.animate({
             'margin-top': '-' + $mainContainer.height() + 'px'
         }, 1250, function () {
-            module.exports.containerFadeIn('js-content-area');
+            module.exports.containerFadeIn(HOOK_CONTENT_AREA);
         });
     },
     removeMarginToMainMenu: function () {
-        let $mainContainer = $body.find('.js-main-menu');
+        let $mainContainer = $body.find(HOOK_MAIN_MENU);
         
-        module.exports.containerFadeOut('js-content-area')
+        module.exports.containerFadeOut(HOOK_CONTENT_AREA)
         .then(() => {
             $mainContainer.animate({
                 'margin-top': '0px'
@@ -113,19 +130,19 @@ module.exports = {
     },
     addButtonsFunctionality: function () {
         $secondMenuContainer
-            .on('click', '.js-close-about-area', resetWebPage)
-            .on('click', '.js-about-left-arrow', decrementPageNumber)
-            .on('click', '.js-about-right-arrow', incrementPageNumber);
+            .on('click', HOOK_CLOSE_ABOUT_AREA, resetWebPage)
+            .on('click', HOOK_ABOUT_LEFT_ARROW, decrementPageNumber)
+            .on('click', HOOK_ABOUT_RIGHT_ARROW, incrementPageNumber);
 
         $(document).keydown(function (e) {
             if (getBodyViewMode() === 'about') {
                 if(e.keyCode === 27) {
-                    $secondMenuContainer.find('.js-close-about-area').addClass('buttonBeingPressed');
+                    $secondMenuContainer.find(HOOK_CLOSE_ABOUT_AREA).addClass(CLASS_BUTTON_BEING_PRESSED);
                 } else if (e.keyCode === 37) {
-                    $secondMenuContainer.find('.js-about-left-arrow').addClass('buttonBeingPressed');
+                    $secondMenuContainer.find(HOOK_ABOUT_LEFT_ARROW).addClass(CLASS_BUTTON_BEING_PRESSED);
                     decrementPageNumber();
                 } else if (e.keyCode === 39) {
-                    $secondMenuContainer.find('.js-about-right-arrow').addClass('buttonBeingPressed');
+                    $secondMenuContainer.find(HOOK_ABOUT_RIGHT_ARROW).addClass(CLASS_BUTTON_BEING_PRESSED);
                     incrementPageNumber();
                 }
             }
@@ -134,20 +151,20 @@ module.exports = {
         $(document).keyup(function (e) {
             if (getBodyViewMode() === 'about') {
                 if(e.keyCode === 27) {
-                    $secondMenuContainer.find('.js-close-about-area').removeClass('buttonBeingPressed');
+                    $secondMenuContainer.find(HOOK_CLOSE_ABOUT_AREA).removeClass(CLASS_BUTTON_BEING_PRESSED);
                     resetWebPage();
                 } else if (e.keyCode === 37) {
-                    $secondMenuContainer.find('.js-about-left-arrow').removeClass('buttonBeingPressed');
+                    $secondMenuContainer.find(HOOK_ABOUT_LEFT_ARROW).removeClass(CLASS_BUTTON_BEING_PRESSED);
                 } else if (e.keyCode === 39) {
-                    $secondMenuContainer.find('.js-about-right-arrow').removeClass('buttonBeingPressed');
+                    $secondMenuContainer.find(HOOK_ABOUT_RIGHT_ARROW).removeClass(CLASS_BUTTON_BEING_PRESSED);
                 }
             }
         });
     },
-    initContentContainer: function (menuView, areaToEmpty = '.js-content-area') {
+    initContentContainer: function (menuView, areaToEmpty = HOOK_CONTENT_AREA_CLASS) {
         return new Promise((resolve, reject) => {
             $secondMenuContainer = $body.find(areaToEmpty).empty();
-            $body.attr('data-menu-in-view', menuView);
+            $body.attr(DATA_MENU_IN_VIEW, menuView);
 
             resolve();
         });
@@ -174,29 +191,29 @@ module.exports = {
         });
     },
     loadContentSequence: function (contentToLoad) {
-        module.exports.containerFadeOut('js-content-section')
+        return module.exports.containerFadeOut(HOOK_CONTENT_SECTION)
         .then(() => {
-            module.exports.initContentContainer('second', '.js-content-section')
+            return module.exports.initContentContainer('second', HOOK_CONTENT_SECTION_CLASS)
         })
         .then(() => {
-            module.exports.loadPageContent(contentToLoad);
+            return module.exports.loadPageContent(contentToLoad);
         })
         .then(() => {
-            module.exports.containerFadeIn('js-content-section');
+            return module.exports.containerFadeIn(HOOK_CONTENT_SECTION);
         });
     },
     loadNewImage: function (newImageNumber, newImage, $container) {
-        closeScreen()
+        return closeScreen()
         .then(() => {
             return new Promise((resolve, reject) => {
-                $container.attr('data-image-number', newImageNumber);
+                $container.attr(DATA_IMAGE_NUMBER, newImageNumber);
                 $container.css('background-image', 'url(' + newImage + ')');
 
                 resolve();
             });
         })
         .then(() => {
-            openScreen();
+            return openScreen();
         });
     }
 }
