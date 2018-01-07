@@ -1,8 +1,8 @@
 let $body = $('body');
 let $container = $body.find('.js-content-area');
 
-const slideInstuctions = `
-    <div class="instructionsContainer">
+const slideZero = `
+    <div class="slideZeroContainer js-slide-container">
         <ul class="instructionsArea cursor-default no-select-text">
             <li>Press the arrow keys to move through the slides.</li>
             <li>Or press the buttons on the right bottom corner to move through the slides.</li>
@@ -12,8 +12,15 @@ const slideInstuctions = `
     </div>
 `;
 
+const slideOne = `
+    <div class="slideOneContainer js-slide-container">Placeholder text</div>
+`;
+
 module.exports = {
-    loadSlideZero: function() {
-        $container.append(slideInstuctions);
+    loadSlideZero: function () {
+        $container.append(slideZero);
+    },
+    loadSlideOne: function () {
+        $container.append(slideOne);
     }
 };

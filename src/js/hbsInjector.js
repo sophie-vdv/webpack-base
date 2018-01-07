@@ -1,5 +1,6 @@
 import {
-    loadSlideZero
+    loadSlideZero,
+    loadSlideOne
 } from './slides.js';
 
 let $body = $('body');
@@ -316,6 +317,8 @@ module.exports = {
     addSlide: function(slideNumber) {
         switch(slideNumber) {
             case 0: loadSlideZero();
+                break;
+            case 1: loadSlideOne();
                 break;
             default:
                 console.log('Slide not found');

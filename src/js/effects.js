@@ -38,10 +38,35 @@ function getBodyViewMode() {
     return $body.attr(DATA_MENU_IN_VIEW);
 }
 
+function slideNumber(newPageNumber) {
+    return new Promise((resolve, reject) => {
+        $secondMenuContainer.attr(DATA_PAGE_NUMBER, newPageNumber);
+        resolve();
+    });
+}
+
+function clearPreviousSlide() {
+    return new Promise((resolve, reject) => {
+        $secondMenuContainer.find('.js-slide-container').remove();
+        resolve();
+    });
+}
+
+function updateSlideSequence(newPageNumber) {
+    // js-slide-container
+    return slideNumber(newPageNumber)
+    .then(() => {
+        return clearPreviousSlide();
+    })
+    .then((resolve, reject) => {
+        addSlide(newPageNumber);
+    });
+}
+
 function incrementPageNumber() {
     let pageNumber = parseInt($secondMenuContainer.attr(DATA_PAGE_NUMBER), 10) + 1;
     
-    $secondMenuContainer.attr(DATA_PAGE_NUMBER, pageNumber);
+    updateSlideSequence(pageNumber);
 }
 
 function decrementPageNumber() {
@@ -49,7 +74,7 @@ function decrementPageNumber() {
 
     if (pageNumber > 0) {
         pageNumber--;
-        $secondMenuContainer.attr(DATA_PAGE_NUMBER, pageNumber);
+        updateSlideSequence(pageNumber);
     }
 }
 
