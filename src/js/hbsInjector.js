@@ -1,3 +1,7 @@
+import {
+    loadSlideZero
+} from './slides.js';
+
 let $body = $('body');
 let $container = $body.find('.js-content-area');
 
@@ -308,5 +312,13 @@ module.exports = {
         .then(() => {
             initProjectParameters(detailID);
         });
+    },
+    addSlide: function(slideNumber) {
+        switch(slideNumber) {
+            case 0: loadSlideZero();
+                break;
+            default:
+                console.log('Slide not found');
+        }
     }
 }

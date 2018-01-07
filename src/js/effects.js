@@ -4,7 +4,8 @@ import {
     loadContactsContent,
     loadProjsContent,
     loadCompanyContent,
-    loadProjContent
+    loadProjContent,
+    addSlide
 } from './hbsInjector.js';
 
 const HOOK_CONTENT_AREA = 'js-content-area';
@@ -124,6 +125,7 @@ module.exports = {
         return new Promise((resolve, reject) => {
             addAboutButton();
             addArrowsContainer();
+            addSlide(0);
 
             resolve();
         });
