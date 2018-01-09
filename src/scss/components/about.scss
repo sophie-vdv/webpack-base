@@ -71,7 +71,7 @@
     width: 90%;
     height: 50%;
 
-    color: white;
+    color: $borderLoadedHover;
 
     position: absolute;
     top: 0;
@@ -85,4 +85,34 @@
         max-width: 500px;
         max-height: 350px;
     }
+}
+
+.textLine {
+    width: 100%;
+    min-height: 1em;
+    max-height: 1em;
+}
+
+.textLineContent {
+    min-width: 0px;
+    max-width: 100%;
+    height: 1em;
+    max-height: 2em;
+
+    float: left;
+}
+
+.dashBlinker {
+    width: 2px;
+    height: 1em;
+
+    background-color: $borderLoadedHover;
+}
+
+.dashBlinker {
+    animation: blinker 0.75s linear infinite;
+}
+  
+@keyframes blinker {  
+    50% { opacity: 0; }
 }
