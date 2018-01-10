@@ -1,5 +1,6 @@
 let $body = $('body');
 let $container = $body.find('.js-content-area');
+let interval;
 
 const slideZero = `
     <div class="slideZeroContainer js-slide-container">
@@ -58,7 +59,7 @@ function insertText(text, $container, delay) {
         let i = 0;
         let wordsLeft = chars.length;
 
-        setInterval(function () {
+        interval = setInterval(function () {
             if(i < chars.length) {
                 $container.text($container.text() + chars[i++]);
                 wordsLeft--;
@@ -83,18 +84,22 @@ function loadSlideOneText(text) {
 
     return insertText(text[i], $($lines[i]), 100)
     .then(() => {
+        clearInterval(interval);
         i++;
         return insertText(text[i], $($lines[i]), 100)
     })
     .then(() => {
+        clearInterval(interval);
         i++;
         return insertText(text[i], $($lines[i]), 100)
     })
     .then(() => {
+        clearInterval(interval);
         i++;
         return insertText(text[i], $($lines[i]), 100)
     })
     .then(() => {
+        clearInterval(interval);
         i++;
         return insertText(text[i], $($lines[i]), 100)
     });
