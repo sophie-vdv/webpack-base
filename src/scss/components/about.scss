@@ -90,15 +90,20 @@
 .textLine {
     width: 100%;
     min-height: 1em;
-    max-height: 2em;
+    max-height: 3em;
+
     clear: both;
+    
+    margin-bottom: 4px;
+}
+
+.textLine:last-child {
+    margin-bottom: 0px;
 }
 
 .textLineContent {
     min-width: 0px;
-    max-width: 100%;
     min-height: 1em;
-    max-height: 2em;
 
     float: left;
 }
