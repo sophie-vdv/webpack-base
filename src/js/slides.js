@@ -33,6 +33,15 @@ const slideOne = `
     </div>
 `;
 
+const slideTwo = `
+    <div class="slideTwoContainer">
+        <div class="slideTwoContentContainer opacity-0 logoFeup js-image-container">
+            <a href="https://www.fe.up.pt" target="_blank" class="display-block height-200"></a>
+        </div>
+        <div class="slideTwoContentContainer js-text-container"></div>
+    </div>
+`;
+
 function loadSlide(slide) {
     return new Promise((resolve, reject) => {
         $container.append(slide);
@@ -88,8 +97,18 @@ function loadSlideOneText(text) {
 function slideOneSequence() {
     return loadSlide(slideOne)
     .then(() => {
-        let year = (new Date()).getFullYear() - 1990;
-        let textToLoad = [
+        let date = new Date();
+        let year;
+        let textToLoad;
+
+        if (date.getMonth() >= 4 && date.getDate() >= 23) {
+            year = date.getFullYear() - 1990;
+        } else {
+            year = date.getFullYear() - 1990 - 1;
+        }
+
+
+        textToLoad = [
             'Hello,',
             'My name is Miguel and my objective in life is to be happy.',
             'I\'m a ' + year + ' year old web developer based in London.',
@@ -101,11 +120,21 @@ function slideOneSequence() {
     });
 }
 
+function slideTwoSequence() {
+    return loadSlide(slideTwo)
+    .then(() => {
+        $('.js-image-container').fadeTo('slow', 1);
+    });
+}
+
 module.exports = {
     loadSlideZero: function () {
         loadSlide(slideZero);
     },
     loadSlideOne: function () {
         slideOneSequence();
+    },
+    loadSlideTwo: function () {
+        slideTwoSequence();
     }
 };

@@ -122,3 +122,36 @@
 @keyframes blinker {  
     50% { opacity: 0; }
 }
+
+.slideTwoContainer {
+    width: 100%;
+    height: calc(100% - 16px);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+
+    margin-top: 16px;
+
+    @media screen and (min-width: $homeMenuBreakpoint) {
+        height: 100%;
+
+        flex-direction: row;
+        justify-content: center;
+
+        margin-top: 0;
+    }
+}
+
+.slideTwoContentContainer {
+    width: 300px;
+    min-height: 200px; 
+}
+
+.logoFeup {
+    background-image: url("/src/img/logo_feup2.jpg");
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
