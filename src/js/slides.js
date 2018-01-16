@@ -1,7 +1,3 @@
-import {
-    containerFadeIn
-} from './effects.js';
-
 let $body = $('body');
 let $container = $body.find('.js-content-area');
 let interval;
@@ -132,8 +128,13 @@ function slideOneSequence() {
 function slideTwoSequence() {
     return loadSlide(slideTwo)
     .then(() => {
-        $('.js-image-container').fadeTo('slow', 1);
-        // return containerFadeIn('js-image-container');
+        return new Promise((resolve, reject) => {
+            $('.js-image-container').fadeTo('slow', 1);
+            resolve();
+        });
+    })
+    .then(() => {
+        // load text
     });
 }
 
