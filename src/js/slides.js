@@ -1,3 +1,7 @@
+import {
+    containerFadeIn
+} from './effects.js';
+
 let $body = $('body');
 let $container = $body.find('.js-content-area');
 let interval;
@@ -34,7 +38,7 @@ const slideOne = `
 `;
 
 const slideTwo = `
-    <div class="slideTwoContainer">
+    <div class="slideTwoContainer js-slide-container">
         <div class="slideTwoContentContainer opacity-0 logoFeup js-image-container">
             <a href="https://www.fe.up.pt" target="_blank" class="display-block height-200"></a>
         </div>
@@ -94,24 +98,29 @@ function loadSlideOneText(text) {
     });
 }
 
+function getMyAge() {
+    let date = new Date();
+    let age;
+
+    if (date.getMonth() >= 4 && date.getDate() >= 23) {
+        age = date.getFullYear() - 1990;
+    } else {
+        age = date.getFullYear() - 1990 - 1;
+    }
+
+    return age;
+}
+
 function slideOneSequence() {
     return loadSlide(slideOne)
     .then(() => {
-        let date = new Date();
-        let year;
+        let age = getMyAge();
         let textToLoad;
-
-        if (date.getMonth() >= 4 && date.getDate() >= 23) {
-            year = date.getFullYear() - 1990;
-        } else {
-            year = date.getFullYear() - 1990 - 1;
-        }
-
 
         textToLoad = [
             'Hello,',
             'My name is Miguel and my objective in life is to be happy.',
-            'I\'m a ' + year + ' year old web developer based in London.',
+            'I\'m a ' + age + ' year old web developer based in London.',
             'And this is my story.',
             'Spoilers: it will be boring and short.'
         ];
@@ -124,6 +133,7 @@ function slideTwoSequence() {
     return loadSlide(slideTwo)
     .then(() => {
         $('.js-image-container').fadeTo('slow', 1);
+        // return containerFadeIn('js-image-container');
     });
 }
 
