@@ -7,6 +7,7 @@ import {
     loadProjContent,
     addSlide
 } from './hbsInjector.js';
+import { containerFadeIn, containerFadeOut } from './fades.js';
 
 const HOOK_CONTENT_AREA = 'js-content-area';
 const HOOK_CONTENT_AREA_CLASS = '.' + HOOK_CONTENT_AREA;
@@ -119,13 +120,13 @@ module.exports = {
         $mainContainer.animate({
             'margin-top': '-' + $mainContainer.height() + 'px'
         }, 1250, function () {
-            module.exports.containerFadeIn(HOOK_CONTENT_AREA);
+            containerFadeIn(HOOK_CONTENT_AREA);
         });
     },
     removeMarginToMainMenu: function () {
         let $mainContainer = $body.find(HOOK_MAIN_MENU);
         
-        module.exports.containerFadeOut(HOOK_CONTENT_AREA)
+        containerFadeOut(HOOK_CONTENT_AREA)
         .then(() => {
             $mainContainer.animate({
                 'margin-top': '0px'
@@ -218,7 +219,7 @@ module.exports = {
         });
     },
     loadContentSequence: function (contentToLoad) {
-        return module.exports.containerFadeOut(HOOK_CONTENT_SECTION)
+        return containerFadeOut(HOOK_CONTENT_SECTION)
         .then(() => {
             return module.exports.initContentContainer('second', HOOK_CONTENT_SECTION_CLASS)
         })
@@ -226,7 +227,7 @@ module.exports = {
             return module.exports.loadPageContent(contentToLoad);
         })
         .then(() => {
-            return module.exports.containerFadeIn(HOOK_CONTENT_SECTION);
+            return containerFadeIn(HOOK_CONTENT_SECTION);
         });
     },
     loadNewImage: function (newImageNumber, newImage, $container) {
@@ -243,4 +244,4 @@ module.exports = {
             return openScreen();
         });
     }
-}
+};

@@ -1,6 +1,6 @@
 /*
  * This file controls the routing.
- * Since, for now, this is only a static website advanced routing (ie. miguelribeiro.me/about) will not work
+ * Since, for now, this is only a static website, advanced routing (ie. miguelribeiro.me/about) will not work
  * For now it handles the navigation on this web page.
  * 
  */
@@ -12,12 +12,11 @@ import {
     addButtonsFunctionality,
     initContentContainer,
     loadPageContent,
-    containerFadeOut,
-    containerFadeIn,
     loadContentSequence,
     loadCompanyProjs,
     loadNewImage
 } from './effects.js';
+import { containerFadeOut, containerFadeIn } from './fades'; 
 
 let $body = $('body');
 
@@ -122,7 +121,7 @@ class Router {
             return loadPageContent('companyProjs', companyID);
         })
         .then(() => {
-            return containerFadeIn(HOOK_CONTENT_SECTION)
+            return containerFadeIn(HOOK_CONTENT_SECTION);
         });
     }
 
@@ -134,7 +133,7 @@ class Router {
             return loadPageContent('projDetails', projectID);
         })
         .then(() => {
-            return containerFadeIn(HOOK_CONTENT_SECTION)
+            return containerFadeIn(HOOK_CONTENT_SECTION);
         });
     }
 

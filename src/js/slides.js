@@ -1,10 +1,9 @@
-import {
-    containerFadeIn
-} from './effects.js';
+import { containerFadeOut, containerFadeIn } from './fades'; 
 
 let $body = $('body');
 let $container = $body.find('.js-content-area');
 let interval;
+let intervalSecond;
 
 const slideZero = `
     <div class="slideZeroContainer js-slide-container">
@@ -42,7 +41,7 @@ const slideTwo = `
         <div class="slideTwoContentContainer opacity-0 logoFeup js-image-container">
             <a href="https://www.fe.up.pt" target="_blank" class="display-block height-200"></a>
         </div>
-        <div class="slideTwoContentContainer js-text-container"></div>
+        <div class="slideTwoContentContainer text-color js-text-container"></div>
     </div>
 `;
 
@@ -53,21 +52,35 @@ function loadSlide(slide) {
     });
 }
 
-function insertText(text, $container, delay) {
+// use another variable as interval
+function insertText(text, $container, delay, slide) {
     return new Promise((resolve, reject) => {
         let chars = text.split('');
         let i = 0;
         let wordsLeft = chars.length;
 
-        interval = setInterval(function () {
-            if(i < chars.length) {
-                $container.text($container.text() + chars[i++]);
-                wordsLeft--;
-                if (wordsLeft === 0) {
-                    resolve();
+        // Work around to deal with race condition created by the promise chain in the first slide
+        if (slide === 1) {
+            interval = setInterval(function () {
+                if(i < chars.length) {
+                    $container.text($container.text() + chars[i++]);
+                    wordsLeft--;
+                    if (wordsLeft === 0) {
+                        resolve();
+                    }
                 }
-            }
-        }, delay);
+            }, delay);
+        } else if (slide === 2) {
+            intervalSecond = setInterval(function () {
+                if(i < chars.length) {
+                    $container.text($container.text() + chars[i++]);
+                    wordsLeft--;
+                    if (wordsLeft === 0) {
+                        resolve();
+                    }
+                }
+            }, delay);
+        }
     });
 }
 
@@ -75,26 +88,26 @@ function loadSlideOneText(text) {
     let $lines = $container.find('.js-text-container');
     let i = 0;
 
-    return insertText(text[i], $($lines[i]), 50)
+    return insertText(text[i], $($lines[i]), 50, 1)
     .then(() => {
         clearInterval(interval);
         i++;
-        return insertText(text[i], $($lines[i]), 50)
+        return insertText(text[i], $($lines[i]), 50, 1);
     })
     .then(() => {
         clearInterval(interval);
         i++;
-        return insertText(text[i], $($lines[i]), 50)
+        return insertText(text[i], $($lines[i]), 50, 1);
     })
     .then(() => {
         clearInterval(interval);
         i++;
-        return insertText(text[i], $($lines[i]), 50)
+        return insertText(text[i], $($lines[i]), 50, 1);
     })
     .then(() => {
         clearInterval(interval);
         i++;
-        return insertText(text[i], $($lines[i]), 50)
+        return insertText(text[i], $($lines[i]), 50, 1);
     });
 }
 
@@ -132,8 +145,16 @@ function slideOneSequence() {
 function slideTwoSequence() {
     return loadSlide(slideTwo)
     .then(() => {
-        $('.js-image-container').fadeTo('slow', 1);
-        // return containerFadeIn('js-image-container');
+        return containerFadeIn('js-image-container');
+    })
+    .then(() => {
+        let textToShow = 'In 2014 I finished my Masters in Electrotecnical Engineering at Faculdade de Engenharia da Universidade do Porto. As soon as I finished I started my Web Developer career, as you do.';
+        let $container = $body.find('.js-text-container');
+
+        return insertText(textToShow, $container, 50, 2);
+    })
+    .then(() => {
+        clearInterval(intervalSecond);
     });
 }
 
