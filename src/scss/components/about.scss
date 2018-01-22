@@ -112,7 +112,7 @@
     width: 2px;
     height: 1em;
 
-    background-color: $borderLoadedHover;
+    color: $borderLoadedHover;
 }
 
 .dashBlinker {
@@ -156,4 +156,13 @@
     background-position: center;
     background-size: contain;
     background-repeat: no-repeat;
+}
+
+.anchorDefaultStyle {
+    text-decoration: none;
+    color: white;
+}
+
+.anchorDefaultStyle:hover {
+    text-decoration: underline;
 }

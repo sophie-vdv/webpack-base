@@ -18,20 +18,21 @@ const slideZero = `
 
 const slideOne = `
     <div class="slideOneContainer js-slide-container">
-        <div class="textLine js-text-line">
-            <div class="textLineContent js-text-container" data-text-line="0"></div>
+        <div class="textLine js-text-line" data-text-line="0">
+            <span class="textLineContent js-text-container"></span>
+            <span class="dashBlinker text-bold js-dash-blinker">|</span>
         </div>
-        <div class="textLine js-text-line">
-            <div class="textLineContent js-text-container" data-text-line="1"></div>
+        <div class="textLine js-text-line" data-text-line="1">
+            <span class="textLineContent js-text-container"></span>
         </div>
-        <div class="textLine js-text-line">
-            <div class="textLineContent js-text-container" data-text-line="2"></div>
+        <div class="textLine js-text-line" data-text-line="2">
+            <span class="textLineContent js-text-container"></span>
         </div>
-        <div class="textLine js-text-line">
-            <div class="textLineContent js-text-container" data-text-line="3"></div>
+        <div class="textLine js-text-line" data-text-line="3">
+            <span class="textLineContent js-text-container"></span>
         </div>
-        <div class="textLine js-text-line">
-            <div class="textLineContent js-text-container" data-text-line="4"></div>
+        <div class="textLine js-text-line" data-text-line="4">
+            <span class="textLineContent js-text-container"></span>
         </div>
     </div>
 `;
@@ -44,6 +45,24 @@ const slideTwo = `
         <div class="slideTwoContentContainer text-color js-text-container"></div>
     </div>
 `;
+
+function moveBlinkerToNextLine() {
+    let $blinker = $container.find('.js-dash-blinker');
+    let blinkerContainerNumber = parseInt($blinker.parent().attr('data-text-line'), 10);
+    let newBlinkerContainerNumber;
+    console.log(blinkerContainerNumber);
+    if (blinkerContainerNumber < 4) {
+        newBlinkerContainerNumber = blinkerContainerNumber + 1;
+    }
+   
+    $blinker.appendTo($('.js-text-line[data-text-line=' + newBlinkerContainerNumber + ']'));
+}
+
+function replaceTextWithAnchor($containerToUse, textToReplace, anchorPath) {
+    let containerContent = $containerToUse.text().replace(textToReplace, '<a href="' + anchorPath + '" target="_blank" class="anchorDefaultStyle">' + textToReplace + '</a>');
+
+    $containerToUse.empty().html(containerContent);
+}
 
 function loadSlide(slide) {
     return new Promise((resolve, reject) => {
@@ -66,6 +85,7 @@ function insertText(text, $container, delay, slide) {
                     $container.text($container.text() + chars[i++]);
                     wordsLeft--;
                     if (wordsLeft === 0) {
+                        moveBlinkerToNextLine();
                         resolve();
                     }
                 }
@@ -143,18 +163,21 @@ function slideOneSequence() {
 }
 
 function slideTwoSequence() {
+    let $containerToUse;
+
     return loadSlide(slideTwo)
     .then(() => {
         return containerFadeIn('js-image-container');
     })
     .then(() => {
         let textToShow = 'In 2014 I finished my Masters in Electrotecnical Engineering at Faculdade de Engenharia da Universidade do Porto. As soon as I finished I started my Web Developer career, as you do.';
-        let $container = $body.find('.js-text-container');
 
-        return insertText(textToShow, $container, 50, 2);
+        $containerToUse = $body.find('.js-text-container');
+        return insertText(textToShow, $containerToUse, 50, 2);
     })
     .then(() => {
         clearInterval(intervalSecond);
+        replaceTextWithAnchor($containerToUse, 'Faculdade de Engenharia da Universidade do Porto', 'https://sigarra.up.pt/feup/');
     });
 }
 
