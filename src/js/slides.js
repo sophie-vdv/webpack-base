@@ -46,11 +46,26 @@ const slideTwo = `
     </div>
 `;
 
+const slideThree = `
+    <div class="slideThreeContainer js-slide-container opacity-0">
+        <div class="logoMajo height-100 js-image-container">
+            <a href="https://www.majo.pt" target="_blank" class="display-block height-100"></a>
+        </div>
+        <div class="slideThreeContentContainer text-color">
+            <div class="slideThreeTextField text-color js-text-intro-1"></div>
+            <div class="slideThreeTextField text-color js-text-intro-2"></div>
+            <div class="slideThreeTextField text-color text-large text-italic js-text-proj-1"></div>
+            <div class="slideThreeTextField text-color text-large text-italic js-text-proj-2"></div>
+            <div class="slideThreeTextField text-color js-text-more-info"></div>
+        </div>
+    </div>
+`;
+
 function moveBlinkerToNextLine() {
     let $blinker = $container.find('.js-dash-blinker');
     let blinkerContainerNumber = parseInt($blinker.parent().attr('data-text-line'), 10);
     let newBlinkerContainerNumber;
-    console.log(blinkerContainerNumber);
+
     if (blinkerContainerNumber < 4) {
         newBlinkerContainerNumber = blinkerContainerNumber + 1;
     }
@@ -91,10 +106,11 @@ function insertText(text, $container, delay, slide) {
                 }
             }, delay);
         } else if (slide === 2) {
-            intervalSecond = setInterval(function () {
+            intervalSecond = setInterval(function () { console.log(chars.length);
                 if(i < chars.length) {
-                    $container.text($container.text() + chars[i++]);
+                    $container.text($container.text() + chars[i]);
                     wordsLeft--;
+                    i++;
                     if (wordsLeft === 0) {
                         resolve();
                     }
@@ -109,26 +125,26 @@ function loadSlideOneText(text) {
     let i = 0;
 
     return insertText(text[i], $($lines[i]), 50, 1)
-    .then(() => {
-        clearInterval(interval);
-        i++;
-        return insertText(text[i], $($lines[i]), 50, 1);
-    })
-    .then(() => {
-        clearInterval(interval);
-        i++;
-        return insertText(text[i], $($lines[i]), 50, 1);
-    })
-    .then(() => {
-        clearInterval(interval);
-        i++;
-        return insertText(text[i], $($lines[i]), 50, 1);
-    })
-    .then(() => {
-        clearInterval(interval);
-        i++;
-        return insertText(text[i], $($lines[i]), 50, 1);
-    });
+        .then(() => {
+            clearInterval(interval);
+            i++;
+            return insertText(text[i], $($lines[i]), 50, 1);
+        })
+        .then(() => {
+            clearInterval(interval);
+            i++;
+            return insertText(text[i], $($lines[i]), 50, 1);
+        })
+        .then(() => {
+            clearInterval(interval);
+            i++;
+            return insertText(text[i], $($lines[i]), 50, 1);
+        })
+        .then(() => {
+            clearInterval(interval);
+            i++;
+            return insertText(text[i], $($lines[i]), 50, 1);
+        });
 }
 
 function getMyAge() {
@@ -146,39 +162,83 @@ function getMyAge() {
 
 function slideOneSequence() {
     return loadSlide(slideOne)
-    .then(() => {
-        let age = getMyAge();
-        let textToLoad;
+        .then(() => {
+            let age = getMyAge();
+            let textToLoad;
 
-        textToLoad = [
-            'Hello,',
-            'My name is Miguel and my objective in life is to be happy.',
-            'I\'m a ' + age + ' year old web developer based in London.',
-            'And this is my story.',
-            'Spoilers: it will be boring and short.'
-        ];
+            textToLoad = [
+                'Hello,',
+                'My name is Miguel and my objective in life is to be happy.',
+                'I\'m a ' + age + ' year old web developer based in London.',
+                'And this is my story.',
+                'Spoilers: it will be boring and short.'
+            ];
 
-        loadSlideOneText(textToLoad);
-    });
+            loadSlideOneText(textToLoad);
+        });
 }
 
 function slideTwoSequence() {
     let $containerToUse;
 
     return loadSlide(slideTwo)
-    .then(() => {
-        return containerFadeIn('js-image-container');
-    })
-    .then(() => {
-        let textToShow = 'In 2014 I finished my Masters in Electrotecnical Engineering at Faculdade de Engenharia da Universidade do Porto. As soon as I finished I started my Web Developer career, as you do.';
+        .then(() => {
+            return containerFadeIn('js-image-container');
+        })
+        .then(() => {
+            let textToShow = 'In 2014 I finished my Masters in Electrotecnical Engineering at Faculdade de Engenharia da Universidade do Porto. As soon as I finished I started my Web Developer career, as you do.';
 
-        $containerToUse = $body.find('.js-text-container');
-        return insertText(textToShow, $containerToUse, 50, 2);
-    })
-    .then(() => {
-        clearInterval(intervalSecond);
-        replaceTextWithAnchor($containerToUse, 'Faculdade de Engenharia da Universidade do Porto', 'https://sigarra.up.pt/feup/');
-    });
+            $containerToUse = $body.find('.js-text-container');
+            return insertText(textToShow, $containerToUse, 50, 2);
+        })
+        .then(() => {
+            clearInterval(intervalSecond);
+            replaceTextWithAnchor($containerToUse, 'Faculdade de Engenharia da Universidade do Porto', 'https://sigarra.up.pt/feup/');
+        });
+}
+
+function slideThreeSequence() {
+    let $containerToUse;
+
+    return loadSlide(slideThree)
+        .then(() => {
+            return containerFadeIn('js-slide-container');
+        })
+        .then(() => {
+            let textToShow = 'In Octber 2014 I started working at a company named MAJO. I was hired, mainly, as a full stack developer but I ended up doing a bit of tech support as well. On both projects I was the only dev working on them :(';
+
+            $containerToUse = $body.find('.js-text-intro-1');
+            clearInterval(intervalSecond);
+            return insertText(textToShow, $containerToUse, 50, 2);
+        })
+        .then(() => {
+            let textToShow = 'My two big projects on MAJO were:';
+
+            $containerToUse = $body.find('.js-text-intro-2');
+            clearInterval(intervalSecond);
+            return insertText(textToShow, $containerToUse, 50, 2);
+        })
+        .then(() => {
+            let textToShow = 'Majo Energy Audit';
+
+            $containerToUse = $body.find('.js-text-proj-1');
+            clearInterval(intervalSecond);
+            return insertText(textToShow, $containerToUse, 50, 2);
+        })
+        .then(() => {
+            let textToShow = 'Majo Managment Platform';
+
+            $containerToUse = $body.find('.js-text-proj-2');
+            clearInterval(intervalSecond);
+            return insertText(textToShow, $containerToUse, 50, 2);
+        })
+        .then(() => {
+            let textToShow = 'More information on them can be found on the projects tab.';
+
+            $containerToUse = $body.find('.js-text-more-info');
+            clearInterval(intervalSecond);
+            return insertText(textToShow, $containerToUse, 50, 2);
+        });
 }
 
 module.exports = {
@@ -190,5 +250,8 @@ module.exports = {
     },
     loadSlideTwo: function () {
         slideTwoSequence();
+    },
+    loadSlideThree: function () {
+        slideThreeSequence();
     }
 };

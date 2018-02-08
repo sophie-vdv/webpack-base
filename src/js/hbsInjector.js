@@ -1,7 +1,8 @@
 import {
     loadSlideZero,
     loadSlideOne,
-    loadSlideTwo
+    loadSlideTwo,
+    loadSlideThree
 } from './slides.js';
 
 let $body = $('body');
@@ -322,6 +323,8 @@ module.exports = {
             case 1: loadSlideOne();
                 break;
             case 2: loadSlideTwo();
+                break;
+            case 3: loadSlideThree();
                 break;
             default:
                 console.log('Slide not found');

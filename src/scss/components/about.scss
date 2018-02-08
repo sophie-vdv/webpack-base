@@ -158,6 +158,13 @@
     background-repeat: no-repeat;
 }
 
+.logoMajo {
+    background-image: url("/src/img/Majo.png");
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
 .anchorDefaultStyle {
     text-decoration: none;
     color: white;
@@ -165,4 +172,30 @@
 
 .anchorDefaultStyle:hover {
     text-decoration: underline;
+}
+
+.slideThreeContainer {
+    width: 100%;
+    min-height: 400px;
+
+    padding: 8px 0 8px 16px;
+    margin-top: 36px;
+}
+
+.slideThreeContentContainer {
+    width: 100%;
+    height: calc(100% - 116px);
+
+    margin-top: 24px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.slideThreeTextField {
+    max-width: 450px;
+
+    margin-top: 8px;
 }
