@@ -1,0 +1,27 @@
+.Icon {
+    width: 53.33px;
+    height: 53.33px;
+    display: inline-block;
+}
+
+.Icon--linkedin {
+    background-image: url("/src/img/linkedin.svg");
+}
+
+.Icon--linkedin:hover {
+    background-image: url("/src/img/linkedin_hover.svg");
+    transition: background-image ease 0.2s
+}
+
+.Icon--github {
+    background-image: url("/src/img/github_grey.svg");
+    background-position: center;
+    background-size: contain;
+}
+
+.Icon--github:hover {
+    background-image: url("/src/img/github_black.svg");
+    background-position: center;
+    background-size: contain;
+    transition: background-image ease 0.2s
+}

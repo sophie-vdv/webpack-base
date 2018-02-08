@@ -70,7 +70,15 @@ module.exports = {
         }),
         new CopyWebpackPlugin([{
             from: 'src/img',
-            to: path.resolve(__dirname, 'dist/img')
+            to: path.resolve(__dirname, 'dist/src/img')
+        },
+        {
+            from: 'src/rules',
+            to: path.resolve(__dirname, 'dist/')
+        },
+        {
+            from: 'src/json',
+            to: path.resolve(__dirname, 'dist/json')
         }])
     ]
 };

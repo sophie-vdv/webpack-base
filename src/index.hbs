@@ -5,13 +5,16 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Webpack</title>
+    <title>Miguel Ribeiro</title>
 </head>
-<body>
-   {{> header }}
-    <div id="test">
-        <span class="title">Hello Webpack</span>
-        <img class="img" src="img/img.png" alt="#">
-    </div>
+<body data-menu-in-view="first">
+   <div class="homeContainer js-main-menu">
+       {{> components/firstMenu }}
+       {{> components/footer }}
+   </div>
+   <div class="contentContainer js-content-area"
+        data-page-number=0>
+       {{> components/contentMenu }}
+   </div>
 </body>
 </html>

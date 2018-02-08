@@ -1,3 +1,26 @@
 @import '~normalize.css';
-@import 'style.scss';
-@import 'fonts.scss';
+
+// Variables need to be imported first
+@import './variables/variables.scss';
+
+@import './base/main.scss';
+@import './base/style.scss';
+
+@import './components/about';
+@import './components/contacts';
+@import './components/contentContainer';
+@import './components/contentNavMenu';
+@import './components/firstMenu.scss';
+@import './components/footer.scss';
+@import './components/icon';
+@import './components/projectDetails';
+@import './components/projsContainer';
+
+@import './helpers/cursor.scss';
+@import './helpers/display.scss';
+@import './helpers/floats.scss';
+@import './helpers/height.scss';
+@import './helpers/opacity.scss';
+@import './helpers/spacers.scss';
+@import './helpers/text.scss';
+@import './helpers/width.scss';

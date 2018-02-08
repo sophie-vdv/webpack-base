@@ -1,0 +1,5 @@
+Options -Indexes
+
+RewriteEngine on
+RewriteCond %{HTTP} off
+RewriteRule (.*) http://%{HTTP_HOST}%{REQUEST_URI}

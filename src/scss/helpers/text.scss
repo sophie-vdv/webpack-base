@@ -1,0 +1,39 @@
+.text-color {
+    color: $textColor;
+}
+
+.text-small-header {
+    font-size: 20px;
+}
+
+.text-big-header {
+    font-size: 35px;
+
+    @media screen and (min-width: $textBigMediumBreakpoint) {
+        font-size: 40px;
+    }
+
+    @media screen and (min-width: $textBigLargeBreakpoint) {
+        font-size: 50px;
+    }
+}
+
+.text-italic {
+    font-style: italic;
+}
+
+.text-bold {
+    font-style: bold;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-left {
+    text-align: left;
+}
+
+.text-large {
+    font-size: 25px;
+}

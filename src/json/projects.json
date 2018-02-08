@@ -1,0 +1,257 @@
+[
+    {
+      "companyName": "ESN Porto",
+      "companyImage": "esnporto_small.png",
+      "companyImageWidth": "110",
+      "companyImageHeight": "31",
+      "companyID": "comp_esnporto",
+      "companySite": "http://www.esnporto.org",
+      "projects": [
+        {
+          "projectID": "comp_esnporto-1",
+          "projectName": "Buddy System",
+          "projectDescription": "Buddy System is a Web App that connects two app members with each other and sends an email to each of them with information about the other user. It requires an user to make the attribution (non automonous attribution was part of the specs)",
+          "projectImages": [
+  
+          ],
+          "projectTechnologies": [
+            {
+              "name": "PHP",
+              "icon": "icon_php.svg"
+            },
+            {
+              "name": "MySQL",
+              "icon": "icon_mysql.svg"
+            },
+            {
+              "name": "HTML5",
+              "icon": "icon_html5.svg"
+            },
+            {
+              "name": "CSS3",
+              "icon": "icon_css3.svg"
+            },
+            {
+              "name": "JavaSript",
+              "icon": "icon_javascript.svg"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "companyName": "MAJO",
+      "companyImage": "Majo.png",
+      "companyImageWidth": "110",
+      "companyImageHeight": "66",
+      "companyID": "comp_majo",
+      "companySite": "http://www.majo.pt",
+      "projects": [
+        {
+          "projectID": "comp_majo-1",
+          "projectName": "Majo Energy Audit",
+          "projectDescription": "Majo Energy Audit is a managment platform that allows users to convert energy values into monetary values. In a first instance it was working to convert energy produced by mini hydric centrals.",
+          "projectImages": [
+            "Majo_majoenergyaudit_0.png",
+            "Majo_majoenergyaudit_1.png",
+            "Majo_majoenergyaudit_2.png",
+            "Majo_majoenergyaudit_3.png"
+          ],
+          "projectTechnologies": [
+            {
+              "name": "PHP",
+              "icon": "icon_php.svg"
+            },
+            {
+              "name": "HTML5",
+              "icon": "icon_html5.svg"
+            },
+            {
+              "name": "CSS",
+              "icon": "icon_css3.svg"
+            },
+            {
+              "name": "MySQL",
+              "icon": "icon_mysql.svg"
+            },
+            {
+              "name": "JavaSript",
+              "icon": "icon_javascript.svg"
+            },
+            {
+              "name": "jQuery",
+              "icon": "icon_jquery.svg"
+            }
+          ]
+        },
+        {
+          "projectID": "comp_majo-2",
+          "projectName": "Majo Managment Plaform",
+          "projectDescription": "Majo Managment Platform is a managment tool to help users receive tasks and manage projects. It is based in Trello and its work flow is based on MAJO's way of working.",
+          "projectImages": [
+  
+          ],
+          "projectTechnologies": [
+            {
+              "name": "PHP",
+              "icon": "icon_php.svg"
+            },
+            {
+              "name": "HTML5",
+              "icon": "icon_html5.svg"
+            },
+            {
+              "name": "CSS3",
+              "icon": "icon_css3.svg"
+            },
+            {
+              "name": "MySQL",
+              "icon": "icon_mysql.svg"
+            },
+            {
+              "name": "MSSQL",
+              "icon": "icon_mssql.svg"
+            },
+            {
+              "name": "JavaSript",
+              "icon": "icon_javascript.svg"
+            },
+            {
+              "name": "jQuery",
+              "icon": "icon_jquery.svg"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "companyName": "This Place",
+      "companyImage": "this_place.png",
+      "companyImageWidth": "110",
+      "companyImageHeight": "46",
+      "companyID": "comp_thisplace",
+      "companySite": "http://www.thisplace.com",
+      "projects": [
+        {
+          "projectID": "comp_thisplace-1",
+          "projectName": "Delhaize",
+          "projectDescription": "Front end work on the web store for the supermarket chain Delhaize.<br><br><a href='https://www.delhaize.be' class='projectDetailsDecriptionContentLink' target='_blank'>Delhaize.be</a><br><br><a href='https://www.ab.gr' class='projectDetailsDecriptionContentLink' target='_blank'>ab.gr</a><br><br><a href='https://www.maxi.rs' class='projectDetailsDecriptionContentLink' target='_blank'>Maxi.rs</a>",
+          "projectImages": [
+            "ThisPlace_Delhaize_0.png",
+            "ThisPlace_Delhaize_1.png",
+            "ThisPlace_Delhaize_2.png"
+          ],
+          "projectTechnologies": [
+            {
+              "name": "NodeJS",
+              "icon": "icon_nodejs.svg"
+            },
+            {
+              "name": "Grunt",
+              "icon": "icon_grunt.svg"
+            },
+            {
+              "name": "JavaSript",
+              "icon": "icon_javascript.svg"
+            },
+            {
+              "name": "jQuery",
+              "icon": "icon_jquery.svg"
+            },
+            {
+              "name": "React",
+              "icon": "icon_react.svg"
+            },
+            {
+              "name": "HTML5",
+              "icon": "icon_html5.svg"
+            },
+            {
+              "name": "CSS/Less",
+              "icon": "icon_less.svg"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "companyName": "Personal Projects",
+      "companyImage": "",
+      "companyImageWidth": "",
+      "companyImageHeight": "",
+      "companyID": "comp_personal",
+      "companySite": "http://miguelribeiro.me",
+      "projects": [
+        {
+          "projectID": "comp_personal-1",
+          "projectName": "BreakTheBlock Hackathon",
+          "projectDescription": "#breaktheblock Hackathon was an event created by Simply Business that challenged the participants to create a solution for insurance using block chain. More information at: <a href='http://breaktheblock.simplybusiness.co.uk/' class='color-white' target='_blank'>Simply Business</a> <br>&nbsp;&nbsp;Our team presented an insurance solution that allowed to insure an event against weather misfortune, but the person that applied to this insurance could only claim his or her prize if he or she were present at the place of the event. We also had a Raspberry Pi that simulated a node in a network of sensors that would detect weather misfortune, such as rain, for example. The user would also be notified by text message with a link to check his or her current location to make sure a claim is possible.",
+          "projectImages": [
+            "personal_breaktheblock_0.png",
+            "personal_breaktheblock_1.png",
+            "personal_breaktheblock_2.png",
+            "personal_breaktheblock_3.png"
+          ],
+          "projectTechnologies": [
+            {
+              "name": "Ethereum",
+              "icon": "icon_ethereum.svg"
+            },
+            {
+              "name": "Solidity",
+              "icon": "icon_solidity.svg"
+            },
+            {
+              "name": "NodeJS",
+              "icon": "icon_nodejs.svg"
+            },
+            {
+              "name": "HTML5",
+              "icon": "icon_html5.svg"
+            },
+            {
+              "name": "CSS/SCSS",
+              "icon": "icon_scss.svg"
+            },
+            {
+              "name": "JavaScript",
+              "icon": "icon_javascript.svg"
+            },
+            {
+              "name": "AngularJS",
+              "icon": "icon_angular.svg"
+            },
+            {
+              "name": "PHP",
+              "icon": "icon_php.svg"
+            },
+            {
+              "name": "Python",
+              "icon": "icon_python.svg"
+            }
+          ]
+        },
+        {
+          "projectID": "comp_personal-2",
+          "projectName": "Infinite scroll module",
+          "projectDescription": "This is a module that was developed for the Delhaize project, but due to the projects struture it was not implemented. It still does provide an open source solution for infinity scroll.<br><br><a href='https://www.npmjs.com/package/jquery-heaven-scroll' class='projectInfo--description--inlineLink' target='_blank'>Npm page</a>",
+          "projectImages": [],
+          "projectTechnologies": [
+            {
+              "name": "HTML5",
+              "icon": "icon_html5.svg"
+            },
+            {
+              "name": "CSS/SCSS",
+              "icon": "icon_scss.svg"
+            },
+            {
+              "name": "JavaScript ES6",
+              "icon": "icon_javascript.svg"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+  

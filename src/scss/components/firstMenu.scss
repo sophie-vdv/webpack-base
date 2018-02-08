@@ -1,0 +1,154 @@
+.homeContainer {
+    width: 100%;
+    height: 100%;
+}
+
+.homeMenuContainer {
+    width: 100%;
+    height: calc(100% - #{$footerHeight});
+
+    @media screen and (min-width: $homeMenuBreakpoint) {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+.homeMenuArea {
+    width: 100%;
+    height: 200px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.nameContainer {
+    width: 100%;
+    height: calc(50% - 3px);
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+
+    .nameContent {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    @media screen and (min-width: $homeMenuBreakpoint) {
+        width: 50%;
+
+        .nameContent {
+            display: flex;
+            justify-content: flex-start;
+            align-items: flex-end;
+        }
+    }
+}
+
+.nameContent {
+    width: 100%;
+    height: 0px;
+
+    overflow: hidden;
+
+    color: white;
+    font-size: 50px;
+
+    animation-name: nameAppear;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-out;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    animation-delay: 2s;
+}
+
+@keyframes nameAppear {
+    from {height: 0px;}
+    to {height: 100%;}
+  }
+
+.borderSeparator {
+    width: calc(100% - 50px);
+    height: 3px;
+    margin: 0 25px;
+}
+
+.borderFiller {
+    width: 0px;
+    height: 100%;
+
+    background-color: white;
+
+    animation-name: borderFiller; /* the name of the animation we defined above */
+    animation-iteration-count: 1; /* how many times the animation will play */
+    animation-timing-function: ease-in; /* how the animation will behave */
+    animation-duration: 2s; /* the duration of the animation */
+    animation-fill-mode: forwards; /* prevent from going back to the begining*/
+}
+
+@keyframes borderFiller {
+    from {width: 0px;}
+    to {width: 100%;}
+}
+
+.menuWrapper {
+    width: 100%;
+    height: 50%;
+
+    @media screen and (min-width: $homeMenuBreakpoint) {
+        width: 50%;
+        height: 50%;
+    }
+}
+
+.menuArea {
+    width: calc(100% - 50px);
+    height: 0px;
+
+    margin: 0 25px;
+  
+    overflow: hidden;
+    z-index: 10;
+  
+    color: white;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  
+    @media screen and (min-width: $homeMenuBreakpoint) {
+        width: calc(100% - 25px);
+        margin: 0;
+    }
+  
+    animation-name: nameAppear;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-out;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    animation-delay: 2s;
+}
+
+.menuOption {
+    width: 33.3%;
+    height: 100%;
+
+    font-size: 18px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @media screen and (min-width: $screen-sm) {
+        font-size: 20px;
+    }
+}
+
+.menuOption:hover {
+    text-decoration: underline;
+    cursor: pointer;
+    background-color: $backgroundColorHover;
+}

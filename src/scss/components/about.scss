@@ -1,0 +1,201 @@
+#escButtonContainer {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+}
+
+#arrowsButtonsContainer {
+    width: 76px;
+    height: 37px;
+
+    position: absolute;
+    bottom: 12px;
+    right: 12px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.aboutButton {
+    width: 35px;
+    height: 35px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid rgb(49, 48, 48);
+    color: rgb(49, 48, 48);   
+}
+
+.buttonHover:hover {
+    color: white;
+    border: 1px solid white;
+}
+
+.buttonBeingPressed {
+    color: white !important;
+    border-color: white !important;
+}
+
+.slideZeroContainer {
+    width: 80%;
+    max-width: 400px;
+    height: 200px;
+
+    border: 1px solid $borderLoadedHover;
+    color: $borderLoadedHover;
+
+    text-align: center;
+
+    position: absolute;
+    top: 32px;
+    left: 0;
+    right: 0;
+
+    margin: auto;
+}
+
+.instructionsArea {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.slideOneContainer {
+    width: 90%;
+    height: 50%;
+
+    color: $borderLoadedHover;
+
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    margin: auto;
+
+    @media screen and (min-width: $homeMenuBreakpoint) {
+        max-width: 500px;
+        max-height: 350px;
+    }
+}
+
+.textLine {
+    width: 100%;
+    min-height: 1em;
+    max-height: 3em;
+
+    clear: both;
+    
+    margin-bottom: 4px;
+}
+
+.textLine:last-child {
+    margin-bottom: 0px;
+}
+
+.textLineContent {
+    min-width: 0px;
+    min-height: 1em;
+
+    float: left;
+}
+
+.dashBlinker {
+    width: 2px;
+    height: 1em;
+
+    color: $borderLoadedHover;
+}
+
+.dashBlinker {
+    animation: blinker 0.75s linear infinite;
+}
+  
+@keyframes blinker {  
+    50% { opacity: 0; }
+}
+
+.slideTwoContainer {
+    width: 100%;
+    height: calc(100% - 16px);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+
+    margin-top: 16px;
+
+    @media screen and (min-width: $homeMenuBreakpoint) {
+        height: 100%;
+
+        flex-direction: row;
+        justify-content: center;
+
+        margin-top: 0;
+    }
+}
+
+.slideTwoContentContainer {
+    width: 300px;
+    min-height: 200px;
+
+    padding: 8px 0 8px 16px;
+}
+
+.logoFeup {
+    background-image: url("/src/img/logo_feup2.jpg");
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.logoMajo {
+    background-image: url("/src/img/Majo.png");
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.anchorDefaultStyle {
+    text-decoration: none;
+    color: white;
+}
+
+.anchorDefaultStyle:hover {
+    text-decoration: underline;
+}
+
+.slideThreeContainer {
+    width: 100%;
+    min-height: 400px;
+
+    padding: 8px 0 8px 16px;
+    margin-top: 36px;
+}
+
+.slideThreeContentContainer {
+    width: 100%;
+    height: calc(100% - 116px);
+
+    margin-top: 24px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.slideThreeTextField {
+    max-width: 450px;
+
+    margin-top: 8px;
+}

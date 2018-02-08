@@ -1,0 +1,164 @@
+.projsContainer {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+.companyLogo {
+    width: 125px;
+    height: 125px;
+
+    margin: 25px 30px 0;
+
+    border-radius: 65px;
+    border: 1px solid $borderLoaded;
+}
+
+.companyLogo:hover {
+    border: 1px solid $borderLoadedHover;
+}
+
+.companyLogoImage {
+    background-position: center;
+    background-size: initial;
+    background-repeat: no-repeat;
+}
+
+.companyLogoImage:hover {
+    background-size: contain;
+}
+
+.companyLogo--comp_esnporto {
+    background-image: url("/src/img/esnporto_smallGrayScale.png");
+}
+
+.companyLogo--comp_esnporto:hover {
+    background-image: url("/src/img/esnporto_small.png");
+    transition: background-image ease 0.2s;
+}
+
+.companyLogo--comp_majo {
+    background-image: url("/src/img/MajoGrayscale.png");
+}
+
+.companyLogo--comp_majo:hover {
+    background-image: url("/src/img/Majo.png");
+    transition: background-image ease 0.2s;
+}
+
+.companyLogo--comp_thisplace {
+    background-image: url("/src/img/this_place_small.png");
+}
+
+.companyOnlyText {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    color: $textColor;
+}
+
+.companyProjects {
+    width: 100%;
+    height: 100%;
+
+    padding-top: 25px;
+
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+}
+
+.companyProjectBlockArea {
+    width: 250px;
+    height: 200px;
+
+    border: 1px solid $borderLoaded;
+}
+
+.companyProjectBlockArea:hover {
+    cursor: pointer;
+    border: 1px solid $borderLoadedHover;
+}
+
+.companyProjectImage {
+    width: 100%;
+    height: calc(100% - 35px);
+}
+
+.projectWithNoImage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.companyProjectName {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+}
+
+.projectImage--Majo_majoenergyaudit_0 {
+    background-image: url("/src/img/Majo_majoenergyaudit_0.png");
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.projectImage--ThisPlace_Delhaize_0 {
+    background-image: url("/src/img/ThisPlace_Delhaize_0.png");
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.projectImage--personal_breaktheblock_0 {
+    background-image: url("/src/img/personal_breaktheblock_0.png");
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.companyHeader {
+    width: 100%;
+    height: 50px;
+
+    display: flex;
+    justify-content: center;
+}
+
+.companyHeaderLogoImageContainer {
+    width: 150px;
+    height: 100%;
+
+    margin-right: 8px; 
+}
+
+.companyNameImage--MAJO {
+    background-image: url("/src/img/Majo.png");
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.companyNameImage--ESN_Porto {
+    background-image: url("/src/img/ESNPortoLogo.png");
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.companyNameImage--This_Place {
+    background-image: url("/src/img/this_place_small.png");
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
